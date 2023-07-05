@@ -78,7 +78,7 @@ export function Login() {
             placeholder='Email or mobile phone number'
             {...formik.getFieldProps('email')}
             className={clsx(
-              'form-control bg-transparent',
+              'form-control bg-light',
               {'is-invalid': formik.touched.email && formik.errors.email},
               {
                 'is-valid': formik.touched.email && !formik.errors.email,
@@ -107,7 +107,7 @@ export function Login() {
             autoComplete='off'
             {...formik.getFieldProps('password')}
             className={clsx(
-              'form-control bg-transparent text-left',
+              'form-control bg-light text-left',
               {
                 'is-invalid': formik.touched.password && formik.errors.password,
               },
@@ -155,11 +155,13 @@ export function Login() {
         </div>
         {/* end::Wrapper */}
       </div>
-      <div className='text-gray-500 text-center fw-semibold fs-6'>
-        Don’t have an account?{' '}
-        <Link to='/auth/registration' className='link-primary '>
-          Sign up
-        </Link>
+      <div className='d-flex flex-center'>
+        <div className='text-gray-500 text-center fw-semibold fs-6 position-absolute bottom-0 pb-5'>
+          Don’t have an account?{' '}
+          <Link to='/auth/registration' className='link-primary '>
+            Sign up
+          </Link>
+        </div>
       </div>
     </form>
   )

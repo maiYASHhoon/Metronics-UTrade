@@ -17,7 +17,7 @@ const AuthLayout = () => {
   }, [])
 
   return (
-    <div className='d-flex flex-column flex-lg-row flex-column-fluid h-100'>
+    <div className='d-flex flex-column flex-lg-row flex-column-fluid h-100 bg-white'>
       {/* begin::Body */}
       <div className='d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-1 order-lg-2'>
         {/* begin::Form */}
