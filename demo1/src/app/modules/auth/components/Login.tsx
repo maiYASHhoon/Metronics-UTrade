@@ -90,7 +90,9 @@ export function Login() {
           />
           {formik.touched.email && formik.errors.email && (
             <div className='fv-plugins-message-container'>
-              <span role='alert'>{formik.errors.email}</span>
+              <div className='fv-help-block text-start'>
+                <span role='alert'>{formik.errors.email}</span>
+              </div>
             </div>
           )}
         </div>
@@ -101,10 +103,11 @@ export function Login() {
           {/* <label className='form-label fw-bolder text-dark fs-6 mb-0'>Password</label> */}
           <input
             type='Password'
+            placeholder='password'
             autoComplete='off'
             {...formik.getFieldProps('password')}
             className={clsx(
-              'form-control bg-transparent',
+              'form-control bg-transparent text-left',
               {
                 'is-invalid': formik.touched.password && formik.errors.password,
               },
@@ -115,7 +118,7 @@ export function Login() {
           />
           {formik.touched.password && formik.errors.password && (
             <div className='fv-plugins-message-container'>
-              <div className='fv-help-block'>
+              <div className='fv-help-block text-start'>
                 <span role='alert'>{formik.errors.password}</span>
               </div>
             </div>
@@ -124,14 +127,14 @@ export function Login() {
         {/* end::Form group */}
 
         {/* begin::Action */}
-        <div className='d-grid mb-10'>
+        <div className='d-grid mb-3'>
           <button
             type='submit'
             id='kt_sign_in_submit'
             className='btn btn-primary'
             disabled={formik.isSubmitting || !formik.isValid}
           >
-            {!loading && <span className='indicator-label'>Sign in</span>}
+            {!loading && <span className='indicator-label'>Continue</span>}
             {loading && (
               <span className='indicator-progress' style={{display: 'block'}}>
                 Please wait...
@@ -143,9 +146,7 @@ export function Login() {
         {/* end::Action */}
 
         {/* begin::Wrapper */}
-        <div className='d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8'>
-          <div />
-
+        <div className='d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8 justify-content-center'>
           {/* begin::Link */}
           <Link to='/auth/forgot-password' className='link-primary'>
             Forgot Password ?
@@ -156,7 +157,7 @@ export function Login() {
       </div>
       <div className='text-gray-500 text-center fw-semibold fs-6'>
         Don’t have an account?{' '}
-        <Link to='/auth/registration' className='link-primary'>
+        <Link to='/auth/registration' className='link-primary '>
           Sign up
         </Link>
       </div>
