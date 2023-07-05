@@ -62,107 +62,98 @@ export function Login() {
       noValidate
       id='kt_login_signin_form'
     >
-      {/* begin::Heading */}
-      <div className='text-center mb-11'>
-        <h1 className='text-dark fw-bolder mb-3'>Sign in to your seller Business account!</h1>
-      </div>
-      {/* begin::Heading */}
+      <div className='text-center mh-353px mw-382px mt-208px mb-207px'>
+        {/* begin::Heading */}
+        <div className='text-start mb-11'>
+          <h1 className='text-dark fw-bolder mb-3'>
+            Sign in to your seller
+            <br /> Business account!
+          </h1>
+        </div>
+        {/* begin::Heading */}
 
-      {/* begin::Login options */}
-      <div className='row g-3 mb-9'>
-        {/* begin::Col */}
-        <div className='col-md-6'></div>
-        {/* end::Col */}
-
-        {/* begin::Col */}
-        <div className='col-md-6'></div>
-        {/* end::Col */}
-      </div>
-      {/* end::Login options */}
-
-      {/* begin::Form group */}
-      <div className='fv-row mb-8'>
-        {/* <label className='form-label fs-6 fw-bolder text-dark'>Email or mobile phone number</label> */}
-        <input
-          placeholder='Email or mobile phone number'
-          {...formik.getFieldProps('email')}
-          className={clsx(
-            'form-control bg-transparent',
-            {'is-invalid': formik.touched.email && formik.errors.email},
-            {
-              'is-valid': formik.touched.email && !formik.errors.email,
-            }
-          )}
-          type='email'
-          name='email'
-          autoComplete='off'
-        />
-        {formik.touched.email && formik.errors.email && (
-          <div className='fv-plugins-message-container'>
-            <span role='alert'>{formik.errors.email}</span>
-          </div>
-        )}
-      </div>
-      {/* end::Form group */}
-
-      {/* begin::Form group */}
-      <div className='fv-row mb-3'>
-        {/* <label className='form-label fw-bolder text-dark fs-6 mb-0'>Password</label> */}
-        <input
-          type='Password'
-          autoComplete='off'
-          {...formik.getFieldProps('password')}
-          className={clsx(
-            'form-control bg-transparent',
-            {
-              'is-invalid': formik.touched.password && formik.errors.password,
-            },
-            {
-              'is-valid': formik.touched.password && !formik.errors.password,
-            }
-          )}
-        />
-        {formik.touched.password && formik.errors.password && (
-          <div className='fv-plugins-message-container'>
-            <div className='fv-help-block'>
-              <span role='alert'>{formik.errors.password}</span>
+        {/* begin::Form group */}
+        <div className='fv-row mb-3'>
+          <input
+            placeholder='Email or mobile phone number'
+            {...formik.getFieldProps('email')}
+            className={clsx(
+              'form-control bg-transparent',
+              {'is-invalid': formik.touched.email && formik.errors.email},
+              {
+                'is-valid': formik.touched.email && !formik.errors.email,
+              }
+            )}
+            type='email'
+            name='email'
+            autoComplete='off'
+          />
+          {formik.touched.email && formik.errors.email && (
+            <div className='fv-plugins-message-container'>
+              <span role='alert'>{formik.errors.email}</span>
             </div>
-          </div>
-        )}
-      </div>
-      {/* end::Form group */}
-
-      {/* begin::Action */}
-      <div className='d-grid mb-10'>
-        <button
-          type='submit'
-          id='kt_sign_in_submit'
-          className='btn btn-primary'
-          disabled={formik.isSubmitting || !formik.isValid}
-        >
-          {!loading && <span className='indicator-label'>Sign in</span>}
-          {loading && (
-            <span className='indicator-progress' style={{display: 'block'}}>
-              Please wait...
-              <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-            </span>
           )}
-        </button>
+        </div>
+        {/* end::Form group */}
+
+        {/* begin::Form group */}
+        <div className='fv-row mb-3'>
+          {/* <label className='form-label fw-bolder text-dark fs-6 mb-0'>Password</label> */}
+          <input
+            type='Password'
+            autoComplete='off'
+            {...formik.getFieldProps('password')}
+            className={clsx(
+              'form-control bg-transparent',
+              {
+                'is-invalid': formik.touched.password && formik.errors.password,
+              },
+              {
+                'is-valid': formik.touched.password && !formik.errors.password,
+              }
+            )}
+          />
+          {formik.touched.password && formik.errors.password && (
+            <div className='fv-plugins-message-container'>
+              <div className='fv-help-block'>
+                <span role='alert'>{formik.errors.password}</span>
+              </div>
+            </div>
+          )}
+        </div>
+        {/* end::Form group */}
+
+        {/* begin::Action */}
+        <div className='d-grid mb-10'>
+          <button
+            type='submit'
+            id='kt_sign_in_submit'
+            className='btn btn-primary'
+            disabled={formik.isSubmitting || !formik.isValid}
+          >
+            {!loading && <span className='indicator-label'>Sign in</span>}
+            {loading && (
+              <span className='indicator-progress' style={{display: 'block'}}>
+                Please wait...
+                <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+              </span>
+            )}
+          </button>
+        </div>
+        {/* end::Action */}
+
+        {/* begin::Wrapper */}
+        <div className='d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8'>
+          <div />
+
+          {/* begin::Link */}
+          <Link to='/auth/forgot-password' className='link-primary'>
+            Forgot Password ?
+          </Link>
+          {/* end::Link */}
+        </div>
+        {/* end::Wrapper */}
       </div>
-      {/* end::Action */}
-
-      {/* begin::Wrapper */}
-      <div className='d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8'>
-        <div />
-
-        {/* begin::Link */}
-        <Link to='/auth/forgot-password' className='link-primary'>
-          Forgot Password ?
-        </Link>
-        {/* end::Link */}
-      </div>
-      {/* end::Wrapper */}
-
       <div className='text-gray-500 text-center fw-semibold fs-6'>
         Don’t have an account?{' '}
         <Link to='/auth/registration' className='link-primary'>
