@@ -19,7 +19,7 @@ const AuthLayout = () => {
   return (
     <div className='d-flex flex-column flex-lg-row flex-column-fluid h-100'>
       {/* begin::Body */}
-      <div className='d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1'>
+      <div className='d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-1 order-lg-2'>
         {/* begin::Form */}
         <div className='d-flex flex-center flex-column flex-lg-row-fluid'>
           {/* begin::Wrapper */}
@@ -34,33 +34,40 @@ const AuthLayout = () => {
 
       {/* begin::Aside */}
       <div
-        className='d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-1 order-lg-2'
+        className='d-flex flex-lg-row-fluid w-lg-50 bgi-size-cover bgi-position-center order-2 order-lg-1'
         style={{backgroundColor: '#e7f1fd'}}
       >
         {/* begin::Content */}
-        <div className='d-flex flex-column flex-center py-15 px-5 px-md-15 w-100'>
+        <div className='ms-20 mt-15 mh-80px mw-50px '>
           {/* begin::Logo */}
           <Link to='/' className='mb-12'>
-            <img alt='Logo' src={toAbsoluteUrl('/media/logos/uTradeLogo.png')} className='h-75px' />
+            <img
+              alt='Logo'
+              src={toAbsoluteUrl('/media/logos/uTradeLogo.png')}
+              className='mh-75px mw-125px'
+            />
           </Link>
-          {/* end::Logo */}
-
+        </div>
+        {/* end::Logo */}
+        <div className='d-flex justify-content-center flex-column w-lg-500px p-10 '>
           {/* begin::Image */}
-          {/* <img
-            className='mx-auto w-275px w-md-50 w-xl-500px mb-10 mb-lg-20'
+          <img
+            className='mx-auto mw-150px mh-259px w-md-50 w-xl-500px mb-10 mb-lg-20 rounded-circle'
             src={toAbsoluteUrl('/media/avatars/300-16.jpg')}
             alt=''
-          /> */}
-          <h3 className='text-black  text-center mb-7'>
-            “It is easy to work with software that has combined our operational functions into one
-            platform. It’s user-friendly and adjusted to the business needs.”
-          </h3>
-          <br />
-          <h3>
-            <a className='text-black fw-bold me-1'>Dan Wood</a> <i>- Founder, Acme Corporation</i>
-          </h3>
+          />
+          <div className='text-center fs-22'>
+            <h3>
+              “It is easy to work with software that has combined our operational functions into one
+              platform. It’s user-friendly and adjusted to the business needs.”
+            </h3>
+            <div className='pt-3 fs-18 font-weight-600 text-italic'>
+              <span className='fw-bold'>Dan Wood</span> - Founder, Acme Corporation
+            </div>
+          </div>
           {/* end::Image */}
         </div>
+
         {/* end::Content */}
       </div>
       {/* end::Aside */}
