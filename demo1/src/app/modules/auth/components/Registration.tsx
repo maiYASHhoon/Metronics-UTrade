@@ -172,14 +172,14 @@ export function Registration() {
               )}
             />
           </div>
-        </div>
-        {formik.touched.phone && formik.errors.phone && (
-          <div className='fv-plugins-message-container'>
-            <div className='fv-help-block'>
-              <span role='alert'>{formik.errors.phone}</span>
+          {formik.touched.phone && formik.errors.phone && (
+            <div className='fv-plugins-message-container'>
+              <div className='fv-help-block'>
+                <span role='alert'>{formik.errors.phone}</span>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
       {/* end::Form group Phone Number */}
 
@@ -252,19 +252,18 @@ export function Registration() {
 
       {/* begin::Form group */}
       <div className='fv-row mb-8'>
-        <label className='form-check form-check-inline fw-600' htmlFor='kt_login_toc_agree'>
-          <span>
-            By continuing, you agree to
-            <a href='#' target='_blank' className='ms-1 link-primary'>
-              Terms & conditions
-            </a>{' '}
-            and
-            <a href='#' target='_blank' className='ms-1 link-primary'>
-              Privacy policy
-            </a>
-            .
-          </span>
-        </label>
+        <span>
+          By continuing, you agree to
+          <a href='#' target='_blank' className='ms-1 link-primary'>
+            Terms & conditions
+          </a>{' '}
+          and
+          <a href='#' target='_blank' className='ms-1 link-primary'>
+            Privacy policy
+          </a>
+          .
+        </span>
+
         {formik.touched.acceptTerms && formik.errors.acceptTerms && (
           <div className='fv-plugins-message-container'>
             <div className='fv-help-block'>
