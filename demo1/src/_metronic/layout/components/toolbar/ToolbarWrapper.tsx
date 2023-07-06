@@ -17,7 +17,12 @@ const ToolbarWrapper = () => {
   return (
     <div
       id='kt_app_toolbar'
-      className={clsx('app-toolbar', classes.toolbar.join(' '), config?.app?.toolbar?.class)}
+      className={clsx(
+        'app-toolbar',
+        classes.toolbar.join(' '),
+        config?.app?.toolbar?.class,
+        'bg-white'
+      )}
     >
       <div
         id='kt_app_toolbar_container'

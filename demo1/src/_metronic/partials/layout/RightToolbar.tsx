@@ -15,7 +15,7 @@ const RightToolbar: FC = () => {
       </div>
 
       <DemosDrawer />
-      <HelpDrawer />
+      {/* <HelpDrawer /> */}
     </>
   )
 }
