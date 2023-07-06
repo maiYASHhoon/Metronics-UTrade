@@ -20,7 +20,7 @@ const Sidebar = () => {
     <div id='kt_app_sidebar' className={clsx('app-sidebar', config.app?.sidebar?.default?.class)}>
       <SidebarLogo />
       <SidebarMenu />
-      <SidebarFooter />
+      {/* <SidebarFooter /> */}
     </div>
   )
 }
@@ -103,8 +103,8 @@ const updateDOM = (config: ILayout) => {
     // sidebar
     if (sidebarElement) {
       const sidebarAttributes = sidebarElement
-        .getAttributeNames()
-        .filter((t) => t.indexOf('data-') > -1)
+      .getAttributeNames()
+      .filter((t) => t.indexOf('data-') > -1)
       sidebarAttributes.forEach((attr) => sidebarElement.removeAttribute(attr))
 
       if (appSidebarDefaultDrawerEnabled) {
