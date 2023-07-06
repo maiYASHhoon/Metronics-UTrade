@@ -24,7 +24,7 @@ const Header: FC = () => {
       id='kt_app_header_menu'
       data-kt-menu='true'
     >
-      <MenuInner />
+      {/* <MenuInner /> */}
     </div>
   )
 }
@@ -63,8 +63,8 @@ const updateDOM = (config: ILayout) => {
     // header
     if (headerElement) {
       const headerAttributes = headerElement
-        .getAttributeNames()
-        .filter((t) => t.indexOf('data-') > -1)
+      .getAttributeNames()
+      .filter((t) => t.indexOf('data-') > -1)
       headerAttributes.forEach((attr) => headerElement.removeAttribute(attr))
 
       if (appHeaderDefaultStickyEnabled) {
