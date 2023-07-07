@@ -20,66 +20,70 @@ import {
 
 const DashboardPage: FC = () => (
   <>
-    {/* begin::Row */}
-    <div className='row g-5 g-xl-10 mb-5 mb-xl-10'>
-      {/* begin::Col */}
-      <div className='col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10'>
-        <ListsWidget6 className='card-xl-stretch mb-xl-8' />
-      </div>
-      {/* end::Col */}
+    {/* begin::Row 4 boxes */}
+    <div className='row gy-5 gx-xl-8 mb-8'>
+      <div className='col-12'>
+        <div className='row justify-content-between'>
+          <div className='col-md-3 col-sm-6'>
+            <div className='card rounded-4 mb-5 mb-md-0' style={{backgroundColor: '#d4e1fc'}}>
+              <div className='card-body'>
+                <div className='flex-grow-1 me-2'>
+                  <a className='fw-bold text-gray-800 text-hover-primary fs-6'>TSH 462,128</a>
+                  <span className='text-muted fw-semibold d-block'>Average Daily Sales</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='col-md-3 col-sm-6 card'>
+            <div className='card rounded-4 mb-5 mb-md-0' style={{backgroundColor: '#ccebfd'}}>
+              <div className='card-body'>
+                <div className='flex-grow-1 me-2'>
+                  <a className='fw-bold text-gray-800 text-hover-primary fs-6'>1200</a>
+                  <span className='text-muted fw-semibold d-block'>Orders this Month</span>
+                </div>
+              </div>
+            </div>
+          </div>
 
-      {/* begin::Col */}
-      <div className='col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10'>
-        {/* <CardsWidget17 className='h-md-50 mb-5 mb-xl-10' /> */}
-        {/* <ListsWidget26 className='h-lg-50' /> */}
+          <div className='col-md-3 col-sm-6 card'>
+            <div className='card rounded-4 mb-5 mb-md-0' style={{backgroundColor: '#ccf3f0'}}>
+              <div className='card-body'>
+                <div className='flex-grow-1 me-2'>
+                  <a className='fw-bold text-gray-800 text-hover-primary fs-6'>35</a>
+                  <span className='text-muted fw-semibold d-block'>New Customer</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='col-md-3 col-sm-6 card'>
+            <div className='card rounded-4 mb-5 mb-md-0' style={{backgroundColor: '#fbebbc'}}>
+              <div className='card-body'>
+                <div className='flex-grow-1 me-2'>
+                  <a className='fw-bold text-gray-800 text-hover-primary fs-6'>Tsh 13,757,564</a>
+                  <span className='text-muted fw-semibold d-block'>Total Sales</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      {/* end::Col */}
-
-      {/* begin::Col */}
-      <div className='col-xxl-6'>{/* <EngageWidget10 className='h-md-100' /> */}</div>
-      {/* end::Col */}
-    </div>
-    {/* end::Row */}
-
-    {/* begin::Row */}
-    <div className='row gx-5 gx-xl-10'>
-      {/* begin::Col */}
-      <div className='col-xxl-6 mb-5 mb-xl-10'>
-        {/* <app-new-charts-widget8 cssclassName="h-xl-100" chartHeight="275px" [chartHeightNumber]="275"></app-new-charts-widget8> */}
-      </div>
-      {/* end::Col */}
-
-      {/* begin::Col */}
-      <div className='col-xxl-6 mb-5 mb-xl-10'>
-        {/* <app-cards-widget18 cssclassName="h-xl-100" image="./assets/media/stock/600x600/img-65.jpg"></app-cards-widget18> */}
-      </div>
-      {/* end::Col */}
     </div>
     {/* end::Row */}
 
     {/* begin::Row */}
     <div className='row gy-5 gx-xl-8'>
-      <div className='col-xxl-4'>{/* <ListsWidget3 className='card-xxl-stretch mb-xl-3' /> */}</div>
+      <div className='col-xxl-4'>
+        <ListsWidget3 className='card-xxl-stretch mb-xl-3' />
+      </div>
       <div className='col-xl-8'>
-        {/* <TablesWidget10 className='card-xxl-stretch mb-5 mb-xl-8' /> */}
+        <TablesWidget10 className='card-xxl-stretch mb-5 mb-xl-8' />
       </div>
     </div>
     {/* end::Row */}
 
-    {/* begin::Row */}
-
-    {/* end::Row */}
-
     <div className='row g-5 gx-xxl-8'>
-      <div className='col-xxl-4'>
-        {/* <MixedWidget8
-          className='card-xxl-stretch mb-xl-3'
-          chartColor='success'
-          chartHeight='150px'
-        /> */}
-      </div>
       <div className='col-xxl-8'>
-        {/* <TablesWidget5 className='card-xxl-stretch mb-5 mb-xxl-8' /> */}
+        <TablesWidget5 className='card-xxl-stretch mb-5 mb-xxl-8' />
       </div>
     </div>
   </>
