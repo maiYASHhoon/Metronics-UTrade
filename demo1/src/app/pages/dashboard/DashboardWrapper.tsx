@@ -48,7 +48,7 @@ const DashboardPage: FC = () => (
     </div>
 
     <div className='row g-5 gx-xxl-8'>
-      <div className='col-xxl-8'>
+      <div className='col-xxl-12'>
         <TablesWidget5 className='card-xxl-stretch mb-5 mb-xxl-8 table-out' />
       </div>
     </div>
