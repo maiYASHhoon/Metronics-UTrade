@@ -10,25 +10,17 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
-      <div className='card-header bg-light mb-3 border-2 pt-5'>
+      <div className='card-header bg-light mb-3 border-2 pt-2'>
         <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bold fs-3 mb-5'>Top 5 Selling products</span>
+          <span className='card-label fw-bold fs-3 mb-1'>Top 5 Selling products</span>
         </h3>
         <div
-          className='card-toolbar fw-bold fs-3 mb-5'
+          className='card-toolbar fw-bold fs-3 mb-3'
           data-bs-toggle='tooltip'
           data-bs-placement='top'
           title='Click to add a user'
         >
-          <a
-            href='#'
-            className='btn btn-sm btn-light-primary '
-            style={{backgroundColor: '#1b74e4'}}
-            // data-bs-toggle='modal'
-            // data-bs-target='#kt_modal_invite_friends'
-          >
-            View All Products
-          </a>
+          <button className='btn btn-primary mb-1'>View all products</button>
         </div>
       </div>
       {/* end::Header */}

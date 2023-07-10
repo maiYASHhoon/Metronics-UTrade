@@ -4,19 +4,11 @@ import {useIntl} from 'react-intl'
 import {toAbsoluteUrl} from '../../../_metronic/helpers'
 import {PageTitle} from '../../../_metronic/layout/core'
 import {
-  ListsWidget2,
   ListsWidget3,
   ListsWidget4,
   ListsWidget6,
   TablesWidget5,
   TablesWidget10,
-  MixedWidget8,
-  CardsWidget7,
-  CardsWidget17,
-  CardsWidget20,
-  ListsWidget26,
-  EngageWidget10,
-  ListsWidget1,
 } from '../../../_metronic/partials/widgets'
 
 const DashboardPage: FC = () => (
@@ -48,7 +40,7 @@ const DashboardPage: FC = () => (
     </div>
 
     <div className='row g-5 gx-xxl-8'>
-      <div className='col-xxl-8'>
+      <div className='col-xxl-12'>
         <TablesWidget5 className='card-xxl-stretch mb-5 mb-xxl-8 table-out' />
       </div>
     </div>
