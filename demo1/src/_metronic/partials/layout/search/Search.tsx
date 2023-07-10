@@ -75,7 +75,7 @@ const Search: FC = () => {
           id='kt_header_search_toggle'
         >
           <div className='btn btn-icon btn-active-light-primary w-30px h-30px w-md-40px h-md-40px'>
-            <KTSVG path='/media/icons/duotune/general/gen021.svg' className='svg-icon-1' />
+            <KTSVG path='/media/icons/duotune/general/bell.svg' className='svg-icon-1' />
           </div>
         </div>
 
