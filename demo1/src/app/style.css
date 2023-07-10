@@ -1,3 +1,13 @@
 .table-out {
     border: solid 0.5px #e0e0df
 }
+
+.customer {
+    padding: 18px 20px;
+    border: solid 0.5px #e0e0df;
+    border-radius: 8px
+}
+
+.fs-22 {
+    font-size: 22px !important;
+}

@@ -16,6 +16,7 @@ import {
   CardsWidget20,
   ListsWidget26,
   EngageWidget10,
+  ListsWidget1,
 } from '../../../_metronic/partials/widgets'
 
 const DashboardPage: FC = () => (
@@ -23,66 +24,32 @@ const DashboardPage: FC = () => (
     {/* begin::Row 4 boxes */}
     <div className='row gy-5 gx-xl-8 mb-8'>
       <div className='col-12'>
-        <div className='row justify-content-between'>
-          <div className='col-md-3 col-sm-6'>
-            <div className='card rounded-4 mb-5 mb-md-0' style={{backgroundColor: '#d4e1fc'}}>
-              <div className='card-body'>
-                <div className='flex-grow-1 me-2'>
-                  <a className='fw-bold text-gray-800 text-hover-primary fs-6'>TSH 462,128</a>
-                  <span className='text-muted fw-semibold d-block'>Average Daily Sales</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='col-md-3 col-sm-6 card'>
-            <div className='card rounded-4 mb-5 mb-md-0' style={{backgroundColor: '#ccebfd'}}>
-              <div className='card-body'>
-                <div className='flex-grow-1 me-2'>
-                  <a className='fw-bold text-gray-800 text-hover-primary fs-6'>1200</a>
-                  <span className='text-muted fw-semibold d-block'>Orders this Month</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className='col-md-3 col-sm-6 card'>
-            <div className='card rounded-4 mb-5 mb-md-0' style={{backgroundColor: '#ccf3f0'}}>
-              <div className='card-body'>
-                <div className='flex-grow-1 me-2'>
-                  <a className='fw-bold text-gray-800 text-hover-primary fs-6'>35</a>
-                  <span className='text-muted fw-semibold d-block'>New Customer</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className='col-md-3 col-sm-6 card'>
-            <div className='card rounded-4 mb-5 mb-md-0' style={{backgroundColor: '#fbebbc'}}>
-              <div className='card-body'>
-                <div className='flex-grow-1 me-2'>
-                  <a className='fw-bold text-gray-800 text-hover-primary fs-6'>Tsh 13,757,564</a>
-                  <span className='text-muted fw-semibold d-block'>Total Sales</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ListsWidget6 />
       </div>
     </div>
+
     {/* end::Row */}
 
     {/* begin::Row */}
-    <div className='row gy-5 gx-xl-8'>
+    <div className='row gy-5 gx-xl-8 mb-2'>
       <div className='col-xl-12'>
         <TablesWidget10 className='card-xxl-stretch mb-5 mb-xl-8 table-out' />
       </div>
     </div>
     {/* end::Row */}
-    <div className='col-xxl-4'>
-      <ListsWidget3 className='card-xxl-stretch mb-xl-3' />
+
+    <div className='row g-9'>
+      <div className='col-xxl-6'>
+        <ListsWidget3 className='card-xxl-stretch mb-xl-8 mb-5 table-out' />
+      </div>
+      <div className='col-xxl-6 '>
+        <ListsWidget4 className='card-xxl-stretch mb-xl-8 mb-5' />
+      </div>
     </div>
+
     <div className='row g-5 gx-xxl-8'>
       <div className='col-xxl-8'>
-        <TablesWidget5 className='card-xxl-stretch mb-5 mb-xxl-8' />
+        <TablesWidget5 className='card-xxl-stretch mb-5 mb-xxl-8 table-out' />
       </div>
     </div>
   </>
