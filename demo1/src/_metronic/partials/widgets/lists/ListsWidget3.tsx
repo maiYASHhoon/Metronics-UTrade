@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
-import {KTSVG} from '../../../helpers'
+import {KTSVG, toAbsoluteUrl} from '../../../helpers'
 import {Dropdown1} from '../../content/dropdown/Dropdown1'
 
 type Props = {
@@ -11,55 +11,42 @@ const ListsWidget3: React.FC<Props> = ({className}) => {
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
-      <div className='card-header border-0'>
-        <h3 className='card-title fw-bold text-dark'>Todo</h3>
-        <div className='card-toolbar'>
-          {/* begin::Menu */}
-          <button
-            type='button'
-            className='btn btn-sm btn-icon btn-color-primary btn-active-light-primary'
-            data-kt-menu-trigger='click'
-            data-kt-menu-placement='bottom-end'
-            data-kt-menu-flip='top-end'
-          >
-            <KTSVG path='/media/icons/duotune/general/gen024.svg' className='svg-icon-2' />
-          </button>
-          <Dropdown1 />
-          {/* end::Menu */}
-        </div>
+      <div className='card-header bg-light border-2 pt-2'>
+        <h3 className='card-title fw-bold text-dark'>New Customer</h3>
       </div>
       {/* end::Header */}
       {/* begin::Body */}
-      <div className='card-body pt-2'>
+      <div className='card-body pb-0'>
         {/* begin::Item */}
-        <div className='d-flex align-items-center mb-8'>
-          {/* begin::Bullet */}
-          <span className='bullet bullet-vertical h-40px bg-success'></span>
-          {/* end::Bullet */}
+        <div className='d-flex align-items-center mb-8 customer'>
           {/* begin::Checkbox */}
-          <div className='form-check form-check-custom form-check-solid mx-5'>
-            <input className='form-check-input' type='checkbox' value='' />
+          <div className='symbol symbol-45px me-5'>
+            <img src={toAbsoluteUrl('/media/customer/1.png')} alt='' />
           </div>
           {/* end::Checkbox */}
           {/* begin::Description */}
           <div className='flex-grow-1'>
             <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
-              Create FireStone Logo
+              Barbara Mendoza
             </a>
-            <span className='text-muted fw-semibold d-block'>Due in 2 Days</span>
+            <span className='text-muted fw-semibold d-block'>Elven Agri</span>
           </div>
           {/* end::Description */}
-          <span className='badge badge-light-success fs-8 fw-bold'>New</span>
+          <a
+            href='#'
+            className='btn btn-sm fw-bold btn-primary'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+          >
+            View
+          </a>
         </div>
         {/* end:Item */}
         {/* begin::Item */}
-        <div className='d-flex align-items-center mb-8'>
-          {/* begin::Bullet */}
-          <span className='bullet bullet-vertical h-40px bg-primary'></span>
-          {/* end::Bullet */}
+        <div className='d-flex align-items-center mb-8 customer'>
           {/* begin::Checkbox */}
-          <div className='form-check form-check-custom form-check-solid mx-5'>
-            <input className='form-check-input' type='checkbox' value='' />
+          <div className='symbol symbol-45px me-5'>
+            <img src={toAbsoluteUrl('/media/customer/2.png')} alt='' />
           </div>
           {/* end::Checkbox */}
           {/* begin::Description */}
@@ -67,94 +54,92 @@ const ListsWidget3: React.FC<Props> = ({className}) => {
             <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
               Stakeholder Meeting
             </a>
-            <span className='text-muted fw-semibold d-block'>Due in 3 Days</span>
+            <span className='text-muted fw-semibold d-block'>Super Meals Limited</span>
           </div>
           {/* end::Description */}
-          <span className='badge badge-light-primary fs-8 fw-bold'>New</span>
+          <a
+            href='#'
+            className='btn btn-sm fw-bold btn-primary'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+          >
+            View
+          </a>
         </div>
         {/* end:Item */}
         {/* begin::Item */}
-        <div className='d-flex align-items-center mb-8'>
-          {/* begin::Bullet */}
-          <span className='bullet bullet-vertical h-40px bg-warning'></span>
-          {/* end::Bullet */}
+        <div className='d-flex align-items-center mb-8 customer'>
           {/* begin::Checkbox */}
-          <div className='form-check form-check-custom form-check-solid mx-5'>
-            <input className='form-check-input' type='checkbox' value='' />
+          <div className='symbol symbol-45px me-5'>
+            <img src={toAbsoluteUrl('/media/customer/3.png')} alt='' />
           </div>
           {/* end::Checkbox */}
           {/* begin::Description */}
           <div className='flex-grow-1'>
             <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
-              Scoping &amp; Estimations
+              Barbara Mendoza
             </a>
-            <span className='text-muted fw-semibold d-block'>Due in 5 Days</span>
+            <span className='text-muted fw-semibold d-block'>Nile Perch Fisheries Ltd</span>
           </div>
           {/* end::Description */}
-          <span className='badge badge-light-warning fs-8 fw-bold'>New</span>
+          <a
+            href='#'
+            className='btn btn-sm fw-bold btn-primary'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+          >
+            View
+          </a>
         </div>
         {/* end:Item */}
         {/* begin::Item */}
-        <div className='d-flex align-items-center mb-8'>
-          {/* begin::Bullet */}
-          <span className='bullet bullet-vertical h-40px bg-primary'></span>
-          {/* end::Bullet */}
+        <div className='d-flex align-items-center mb-8 customer'>
           {/* begin::Checkbox */}
-          <div className='form-check form-check-custom form-check-solid mx-5'>
-            <input className='form-check-input' type='checkbox' value='' />
+          <div className='symbol symbol-45px me-5'>
+            <img src={toAbsoluteUrl('/media/customer/4.png')} alt='' />
           </div>
           {/* end::Checkbox */}
           {/* begin::Description */}
           <div className='flex-grow-1'>
             <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
-              KPI App Showcase
+              Barbara Mendoza
             </a>
-            <span className='text-muted fw-semibold d-block'>Due in 2 Days</span>
+            <span className='text-muted fw-semibold d-block'>MacLeans BeneCIBO Limited</span>
           </div>
           {/* end::Description */}
-          <span className='badge badge-light-primary fs-8 fw-bold'>New</span>
+          <a
+            href='#'
+            className='btn btn-sm fw-bold btn-primary'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+          >
+            View
+          </a>
         </div>
         {/* end:Item */}
         {/* begin::Item */}
-        <div className='d-flex align-items-center mb-8'>
-          {/* begin::Bullet */}
-          <span className='bullet bullet-vertical h-40px bg-danger'></span>
-          {/* end::Bullet */}
+        <div className='d-flex align-items-center mb-8 customer'>
           {/* begin::Checkbox */}
-          <div className='form-check form-check-custom form-check-solid mx-5'>
-            <input className='form-check-input' type='checkbox' value='' />
+          <div className='symbol symbol-45px me-5'>
+            <img src={toAbsoluteUrl('/media/customer/5.png')} alt='' />
           </div>
           {/* end::Checkbox */}
           {/* begin::Description */}
           <div className='flex-grow-1'>
             <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
-              Project Meeting
+              Barbara Mendoza
             </a>
-            <span className='text-muted fw-semibold d-block'>Due in 12 Days</span>
+            <span className='text-muted fw-semibold d-block'>Omros Foods</span>
           </div>
           {/* end::Description */}
-          <span className='badge badge-light-danger fs-8 fw-bold'>New</span>
-        </div>
-        {/* end:Item */}
-        {/* begin::Item */}
-        <div className='d-flex align-items-center'>
-          {/* begin::Bullet */}
-          <span className='bullet bullet-vertical h-40px bg-success'></span>
-          {/* end::Bullet */}
-          {/* begin::Checkbox */}
-          <div className='form-check form-check-custom form-check-solid mx-5'>
-            <input className='form-check-input' type='checkbox' value='' />
-          </div>
-          {/* end::Checkbox */}
-          {/* begin::Description */}
-          <div className='flex-grow-1'>
-            <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
-              Customers Update
-            </a>
-            <span className='text-muted fw-semibold d-block'>Due in 1 week</span>
-          </div>
-          {/* end::Description */}
-          <span className='badge badge-light-success fs-8 fw-bold'>New</span>
+          <a
+            href='#'
+            className='btn btn-sm fw-bold btn-primary'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+          >
+            View
+          </a>
         </div>
         {/* end:Item */}
       </div>

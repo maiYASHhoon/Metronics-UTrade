@@ -10,191 +10,139 @@ type Props = {
 
 const ListsWidget4: React.FC<Props> = ({className, items = 6}) => {
   return (
-    <div className='card card-xl-stretch mb-xl-8'>
+    <div className='card card-xl-stretch table-out mb-xl-8'>
       {/* begin::Header */}
-      <div className='card-header border-0 pt-5'>
-        <h3 className='card-title align-items-start flex-column'>
-          <span className='card-label fw-bold text-dark'>Trends</span>
-          <span className='text-muted mt-1 fw-semibold fs-7'>Latest tech trends</span>
-        </h3>
-        <div className='card-toolbar'>
-          {/* begin::Menu */}
-          <button
-            type='button'
-            className='btn btn-sm btn-icon btn-color-primary btn-active-light-primary'
-            data-kt-menu-trigger='click'
-            data-kt-menu-placement='bottom-end'
-            data-kt-menu-flip='top-end'
-          >
-            <KTSVG path='/media/icons/duotune/general/gen024.svg' className='svg-icon-2' />
-          </button>
-          <Dropdown1 />
-          {/* end::Menu */}
-        </div>
+      <div className='card-header bg-light border-2 pt-2'>
+        <h3 className='card-title fw-bold text-dark'>Team performance</h3>
       </div>
       {/* end::Header */}
       {/* begin::Body */}
-      <div className='card-body pt-5'>
+      <div className='card-body pb-0'>
         {/* begin::Item */}
-        <div className='d-flex align-items-sm-center mb-7'>
-          {/* begin::Symbol */}
-          <div className='symbol symbol-50px me-5'>
-            <span className='symbol-label'>
-              <img
-                src={toAbsoluteUrl('/media/svg/brand-logos/plurk.svg')}
-                className='h-50 align-self-center'
-                alt=''
-              />
-            </span>
+        <div className='d-flex align-items-center mb-8 customer'>
+          {/* begin::Checkbox */}
+          <div className='symbol symbol-45px me-5'>
+            <img src={toAbsoluteUrl('/media/avatars/300-7.jpg')} alt='' />
           </div>
-          {/* end::Symbol */}
-          {/* begin::Section */}
-          <div className='d-flex align-items-center flex-row-fluid flex-wrap'>
-            <div className='flex-grow-1 me-2'>
-              <a href='#' className='text-gray-800 text-hover-primary fs-6 fw-bold'>
-                Top Authors
-              </a>
-              <span className='text-muted fw-semibold d-block fs-7'>Mark, Rowling, Esther</span>
-            </div>
-            <span className='badge badge-light fw-bold my-2'>+82$</span>
+          {/* end::Checkbox */}
+          {/* begin::Description */}
+          <div className='flex-grow-1'>
+            <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
+              Patrick Richards
+            </a>
+            <span className='text-muted fw-semibold d-block'>Total sales: Tsh 313,214</span>
           </div>
-          {/* end::Section */}
+          {/* end::Description */}
+          <a
+            href='#'
+            className='btn btn-sm fw-bold btn-primary'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+          >
+            View
+          </a>
         </div>
-        {/* end::Item */}
+        {/* end:Item */}
         {/* begin::Item */}
-        <div className='d-flex align-items-sm-center mb-7'>
-          {/* begin::Symbol */}
-          <div className='symbol symbol-50px me-5'>
-            <span className='symbol-label'>
-              <img
-                src={toAbsoluteUrl('/media/svg/brand-logos/telegram.svg')}
-                className='h-50 align-self-center'
-                alt=''
-              />
-            </span>
+        <div className='d-flex align-items-center mb-8 customer'>
+          {/* begin::Checkbox */}
+          <div className='symbol symbol-45px me-5'>
+            <img src={toAbsoluteUrl('/media/avatars/300-15.jpg')} alt='' />
           </div>
-          {/* end::Symbol */}
-          {/* begin::Section */}
-          <div className='d-flex align-items-center flex-row-fluid flex-wrap'>
-            <div className='flex-grow-1 me-2'>
-              <a href='#' className='text-gray-800 text-hover-primary fs-6 fw-bold'>
-                Popular Authors
-              </a>
-              <span className='text-muted fw-semibold d-block fs-7'>Randy, Steve, Mike</span>
-            </div>
-            <span className='badge badge-light fw-bold my-2'>+280$</span>
+          {/* end::Checkbox */}
+          {/* begin::Description */}
+          <div className='flex-grow-1'>
+            <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
+              Aunali Mohamed Abdulrazak
+            </a>
+            <span className='text-muted fw-semibold d-block'>Total sales: Tsh 237,500</span>
           </div>
-          {/* end::Section */}
+          {/* end::Description */}
+          <a
+            href='#'
+            className='btn btn-sm fw-bold btn-primary'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+          >
+            View
+          </a>
         </div>
-        {/* end::Item */}
+        {/* end:Item */}
         {/* begin::Item */}
-        <div className='d-flex align-items-sm-center mb-7'>
-          {/* begin::Symbol */}
-          <div className='symbol symbol-50px me-5'>
-            <span className='symbol-label'>
-              <img
-                src={toAbsoluteUrl('/media/svg/brand-logos/vimeo.svg')}
-                className='h-50 align-self-center'
-                alt=''
-              />
-            </span>
+        <div className='d-flex align-items-center mb-8 customer'>
+          {/* begin::Checkbox */}
+          <div className='symbol symbol-45px me-5'>
+            <img src={toAbsoluteUrl('/media/avatars/300-24.jpg')} alt='' />
           </div>
-          {/* end::Symbol */}
-          {/* begin::Section */}
-          <div className='d-flex align-items-center flex-row-fluid flex-wrap'>
-            <div className='flex-grow-1 me-2'>
-              <a href='#' className='text-gray-800 text-hover-primary fs-6 fw-bold'>
-                New Users
-              </a>
-              <span className='text-muted fw-semibold d-block fs-7'>John, Pat, Jimmy</span>
-            </div>
-            <span className='badge badge-light fw-bold my-2'>+4500$</span>
+          {/* end::Checkbox */}
+          {/* begin::Description */}
+          <div className='flex-grow-1'>
+            <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
+              Bianca Ross
+            </a>
+            <span className='text-muted fw-semibold d-block'>Total sales: Tsh 215,125</span>
           </div>
-          {/* end::Section */}
+          {/* end::Description */}
+          <a
+            href='#'
+            className='btn btn-sm fw-bold btn-primary'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+          >
+            View
+          </a>
         </div>
-        {/* end::Item */}
+        {/* end:Item */}
         {/* begin::Item */}
-        <div className='d-flex align-items-sm-center mb-7'>
-          {/* begin::Symbol */}
-          <div className='symbol symbol-50px me-5'>
-            <span className='symbol-label'>
-              <img
-                src={toAbsoluteUrl('/media/svg/brand-logos/bebo.svg')}
-                className='h-50 align-self-center'
-                alt=''
-              />
-            </span>
+        <div className='d-flex align-items-center mb-8 customer'>
+          {/* begin::Checkbox */}
+          <div className='symbol symbol-45px me-5'>
+            <img src={toAbsoluteUrl('/media/avatars/300-17.jpg')} alt='' />
           </div>
-          {/* end::Symbol */}
-          {/* begin::Section */}
-          <div className='d-flex align-items-center flex-row-fluid flex-wrap'>
-            <div className='flex-grow-1 me-2'>
-              <a href='#' className='text-gray-800 text-hover-primary fs-6 fw-bold'>
-                Active Customers
-              </a>
-              <span className='text-muted fw-semibold d-block fs-7'>Mark, Rowling, Esther</span>
-            </div>
-            <span className='badge badge-light fw-bold my-2'>+4500$</span>
+          {/* end::Checkbox */}
+          {/* begin::Description */}
+          <div className='flex-grow-1'>
+            <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
+              Matthew Powell
+            </a>
+            <span className='text-muted fw-semibold d-block'>Total sales: Tsh 132,300</span>
           </div>
-          {/* end::Section */}
+          {/* end::Description */}
+          <a
+            href='#'
+            className='btn btn-sm fw-bold btn-primary'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+          >
+            View
+          </a>
         </div>
-        {/* end::Item */}
-
-        {items > 4 && (
-          <div className='d-flex align-items-sm-center mb-7'>
-            {/* begin::Symbol */}
-            <div className='symbol symbol-50px me-5'>
-              <span className='symbol-label'>
-                <img
-                  src={toAbsoluteUrl('/media/svg/brand-logos/kickstarter.svg')}
-                  className='h-50 align-self-center'
-                  alt=''
-                />
-              </span>
-            </div>
-            {/* end::Symbol */}
-            {/* begin::Section */}
-            <div className='d-flex align-items-center flex-row-fluid flex-wrap'>
-              <div className='flex-grow-1 me-2'>
-                <a href='#' className='text-gray-800 text-hover-primary fs-6 fw-bold'>
-                  Bestseller Theme
-                </a>
-                <span className='text-muted fw-semibold d-block fs-7'>Disco, Retro, Sports</span>
-              </div>
-              <span className='badge badge-light fw-bold my-2'>+4500$</span>
-            </div>
-            {/* end::Section */}
+        {/* end:Item */}
+        {/* begin::Item */}
+        <div className='d-flex align-items-center mb-8 customer'>
+          {/* begin::Checkbox */}
+          <div className='symbol symbol-45px me-5'>
+            <img src={toAbsoluteUrl('/media/avatars/300-6.jpg')} alt='' />
           </div>
-        )}
-
-        {items > 5 && (
-          <div className='d-flex align-items-sm-center'>
-            {/* begin::Symbol */}
-            <div className='symbol symbol-50px me-5'>
-              <span className='symbol-label'>
-                <img
-                  src={toAbsoluteUrl('/media/svg/brand-logos/fox-hub.svg')}
-                  className='h-50 align-self-center'
-                  alt=''
-                />
-              </span>
-            </div>
-            {/* end::Symbol */}
-            {/* begin::Section */}
-            <div className='d-flex align-items-center flex-row-fluid flex-wrap'>
-              <div className='flex-grow-1 me-2'>
-                <a href='#' className='text-gray-800 text-hover-primary fs-6 fw-bold'>
-                  Fox Broker App
-                </a>
-                <span className='text-muted fw-semibold d-block fs-7'>
-                  Finance, Corporate, Apps
-                </span>
-              </div>
-              <span className='badge badge-light fw-bold my-2'>+4500$</span>
-            </div>
-            {/* end::Section */}
+          {/* end::Checkbox */}
+          {/* begin::Description */}
+          <div className='flex-grow-1'>
+            <a href='#' className='text-gray-800 text-hover-primary fw-bold fs-6'>
+              Nia Ayim
+            </a>
+            <span className='text-muted fw-semibold d-block'>Total sales: Tsh 45,212</span>
           </div>
-        )}
+          {/* end::Description */}
+          <a
+            href='#'
+            className='btn btn-sm fw-bold btn-primary'
+            data-bs-toggle='modal'
+            data-bs-target='#kt_modal_create_app'
+          >
+            View
+          </a>
+        </div>
+        {/* end:Item */}
       </div>
       {/* end::Body */}
     </div>

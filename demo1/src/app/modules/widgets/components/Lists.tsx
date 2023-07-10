@@ -36,7 +36,7 @@ const Lists: FC = () => {
           <ListsWidget5 className='card-xl-stretch mb-xl-8' />
         </div>
         <div className='col-xl-4'>
-          <ListsWidget6 className='card-xl-stretch mb-5 mb-xl-8' />
+          <ListsWidget6 />
         </div>
       </div>
       {/* end::Row */}

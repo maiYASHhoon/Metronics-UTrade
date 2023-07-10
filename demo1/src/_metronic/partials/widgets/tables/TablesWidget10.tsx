@@ -41,17 +41,6 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
             {/* begin::Table head */}
             <thead>
               <tr className='fw-bold text-bold'>
-                <th className='w-25px'>
-                  {/* <div className='form-check form-check-sm form-check-custom form-check-solid'>
-                    <input
-                      className='form-check-input'
-                      type='checkbox'
-                      value='1'
-                      data-kt-check='true'
-                      data-kt-check-target='.widget-9-check'
-                    />
-                  </div> */}
-                </th>
                 <th className='min-w-150px'>Product name</th>
                 <th className='min-w-140px'>Unit sold</th>
                 <th className='min-w-120px'>Total Customer</th>
@@ -62,11 +51,6 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
             {/* begin::Table body */}
             <tbody>
               <tr>
-                <td>
-                  {/* <div className='form-check form-check-sm form-check-custom form-check-solid'>
-                    <input className='form-check-input widget-9-check' type='checkbox' value='1' />
-                  </div> */}
-                </td>
                 <td>
                   <div className='d-flex align-items-center'>
                     <div className='symbol symbol-45px me-5'>
@@ -106,7 +90,6 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
                 </td>
               </tr>
               <tr>
-                <td></td>
                 <td>
                   <div className='d-flex align-items-center'>
                     <div className='symbol symbol-45px me-5'>
@@ -146,7 +129,6 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
                 </td>
               </tr>
               <tr>
-                <td></td>
                 <td>
                   <div className='d-flex align-items-center'>
                     <div className='symbol symbol-45px me-5'>
@@ -186,7 +168,6 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
                 </td>
               </tr>
               <tr>
-                <td></td>
                 <td>
                   <div className='d-flex align-items-center'>
                     <div className='symbol symbol-45px me-5'>
@@ -226,7 +207,6 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
                 </td>
               </tr>
               <tr>
-                <td></td>
                 <td>
                   <div className='d-flex align-items-center'>
                     <div className='symbol symbol-45px me-5'>
