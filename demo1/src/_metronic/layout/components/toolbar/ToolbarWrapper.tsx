@@ -14,34 +14,7 @@ const ToolbarWrapper = () => {
     config.app?.pageTitle?.display
   )
 
-  return (
-    <div
-      id='kt_app_toolbar'
-      className={clsx(
-        'app-toolbar',
-        classes.toolbar.join(' '),
-        config?.app?.toolbar?.class,
-        'bg-white'
-      )}
-    >
-      <div
-        id='kt_app_toolbar_container'
-        className={clsx(
-          'app-container',
-          classes.toolbarContainer.join(' '),
-          config.app?.toolbar?.containerClass,
-          config.app?.toolbar?.minimize?.enabled ? 'app-toolbar-minimize' : '',
-          {
-            'container-fluid': config.app?.toolbar?.container === 'fluid',
-            'container-xxl': config.app?.toolbar?.container === 'fixed',
-          }
-        )}
-      >
-        {isPageTitleVisible && <PageTitleWrapper />}
-        <Toolbar />
-      </div>
-    </div>
-  )
+  return <Toolbar />
 }
 
 const showPageTitle = (appToolbarLayout?: ToolbarType, appPageTitleDisplay?: boolean): boolean => {

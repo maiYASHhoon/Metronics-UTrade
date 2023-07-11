@@ -1,12 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../helpers'
+import {useNavigate} from 'react-router-dom'
 
 type Props = {
   className: string
 }
 
 const TablesWidget10: React.FC<Props> = ({className}) => {
+  const navigate = useNavigate()
+  const handleClick = () => navigate('/view-product')
+
   return (
     <div className={`card ${className}`}>
       {/* begin::Header */}
@@ -20,7 +24,9 @@ const TablesWidget10: React.FC<Props> = ({className}) => {
           data-bs-placement='top'
           title='Click to add a user'
         >
-          <button className='btn btn-primary mb-1'>View all products</button>
+          <button className='btn btn-primary mb-1' onClick={handleClick}>
+            View all products
+          </button>
         </div>
       </div>
       {/* end::Header */}

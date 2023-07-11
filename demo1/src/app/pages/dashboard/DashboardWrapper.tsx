@@ -2,6 +2,8 @@
 import {FC} from 'react'
 import {useIntl} from 'react-intl'
 import {toAbsoluteUrl} from '../../../_metronic/helpers'
+import Select from 'react-select'
+
 import {PageTitle} from '../../../_metronic/layout/core'
 import {
   ListsWidget3,
@@ -10,7 +12,31 @@ import {
   TablesWidget5,
   TablesWidget10,
 } from '../../../_metronic/partials/widgets'
+const optionsDistrict = [
+  {value: 'Kigamboni district', label: 'Kigamboni district'},
+  {value: 'strawberry', label: 'Strawberry'},
+  {value: 'vanilla', label: 'Vanilla'},
+]
+const optionsYear = [
+  {value: 'July 2023', label: 'July 2023'},
+  {value: 'June 2023', label: 'June 2023'},
+  {value: 'May 2023', label: 'May 2023'},
+]
+const customStyles = {
+  control: (provided: any) => ({
+    ...provided,
+    width: 'auto',
+    height: '50px',
+    borderRadius: '8px',
+    border: 'solid 0.5px #e0e0df',
+    backgroundColor: '#f9f9f9',
+    fontSize: '15px',
+    fontWeight: 'bold',
+  }),
+}
 
+const defaultOption = {value: 'Kigamboni district', label: 'Kigamboni district'}
+const defaultOption2 = {value: 'July 2023', label: 'July 2023'}
 const DashboardPage: FC = () => (
   <>
     {/* begin::Row 4 boxes */}
@@ -51,7 +77,20 @@ const DashboardWrapper: FC = () => {
   const intl = useIntl()
   return (
     <>
-      <PageTitle breadcrumbs={[]}>{intl.formatMessage({id: 'MENU.DASHBOARD'})}</PageTitle>
+      <div className='row  align-items-center mb-5 pt-5'>
+        <div className='col-lg-6 pt-4 mb-3'>
+          <h1>Dashboard</h1>
+        </div>
+        <div className='col-lg-6 d-flex justify-content-end align-items-center gap-2 gap-lg-3'>
+          <div className='w-225px'>
+            <Select options={optionsDistrict} styles={customStyles} defaultValue={defaultOption} />
+          </div>
+          <div className='w-175px'>
+            <Select options={optionsYear} styles={customStyles} defaultValue={defaultOption2} />
+          </div>
+        </div>
+      </div>
+
       <DashboardPage />
     </>
   )
