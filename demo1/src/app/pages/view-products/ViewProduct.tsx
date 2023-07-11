@@ -58,7 +58,7 @@ const ViewProduct: FC = () => {
       {/* end::Header */}
       {/* begin::Body */}
 
-      <div className='card'>
+      <div className='card table-out'>
         <div className='card-body py-3'>
           {/* begin::Table container */}
           <div className='table-responsive'>
