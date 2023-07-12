@@ -38,16 +38,7 @@ const ToolbarClassic = (props: any) => {
 
   const defaultOption = {value: 'Kigamboni district', label: 'Kigamboni district'}
   const defaultOption2 = {value: 'July 2023', label: 'July 2023'}
-  return (
-    <div className='d-flex align-items-center gap-2 gap-lg-3 '>
-      <div className='w-225px'>
-        <Select options={optionsDistrict} styles={customStyles} defaultValue={defaultOption} />
-      </div>
-      <div className='w-175px'>
-        <Select options={optionsYear} styles={customStyles} defaultValue={defaultOption2} />
-      </div>
-    </div>
-  )
+  return <></>
 }
 
 export {ToolbarClassic}

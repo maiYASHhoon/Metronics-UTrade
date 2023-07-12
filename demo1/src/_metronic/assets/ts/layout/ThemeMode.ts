@@ -1,7 +1,8 @@
 import {themeMenuModeLSKey, themeModelSKey} from '../../../partials'
 import {EventHandlerUtil} from '../_utils'
 
-type Mode = 'light' | 'dark' | 'system'
+// type Mode = 'light' | 'dark' | 'system'
+type Mode = 'light'
 
 class ThemeMode {
   menu: HTMLElement | null = null
@@ -28,25 +29,25 @@ class ThemeMode {
       return defaultMode
     }
 
-    if (menuMode === 'system') {
-      return this.getSystemMode()
-    }
-
+    // if (menuMode === 'system') {
+    //   return this.getSystemMode()
+    // }
+    // dark
     return menuMode
   }
 
   public setMode = (mode: Mode, menuMode: Mode | ''): void => {
     // Check input values
-    if (mode !== 'light' && mode !== 'dark') {
+    if (mode !== 'light') {
       return
     }
 
-    // Reset mode if system mode was changed
-    if (menuMode === 'system') {
-      if (this.getSystemMode() !== mode) {
-        mode = this.getSystemMode()
-      }
-    }
+    // // Reset mode if system mode was changed
+    // if (menuMode === 'system') {
+    //   if (this.getSystemMode() !== mode) {
+    //     mode = this.getSystemMode()
+    //   }
+    // }
 
     // Check menu mode
     if (!menuMode) {
@@ -96,7 +97,7 @@ class ThemeMode {
   }
 
   public getSystemMode = (): Mode => {
-    return window.matchMedia('(prefers-color-scheme: dark)') ? 'dark' : 'light'
+    return window.matchMedia('(prefers-color-scheme: dark)') ? 'light' : 'light'
   }
 
   private initMode = (): void => {
@@ -129,39 +130,60 @@ class ThemeMode {
 
   private handleMenu = (): void => {
     this.menu
-      ?.querySelectorAll<HTMLElement>('[data-kt-element="mode"]')
-      ?.forEach((item: HTMLElement) => {
-        item.addEventListener('click', (e) => {
-          e.preventDefault()
+    ?.querySelectorAll<HTMLElement>('[data-kt-element="mode"]')
+    ?.forEach((item: HTMLElement) => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault()
 
-          const menuMode: string | null = item.getAttribute('data-kt-value')
-          const mode = menuMode === 'system' ? this.getSystemMode() : menuMode
+        const menuMode: string | null = item.getAttribute('data-kt-value')
+        const mode = menuMode === 'system' ? this.getSystemMode() : menuMode
 
-          if (mode) {
-            this.setMode(mode as Mode, menuMode as Mode | '')
-          }
-        })
+        if (mode) {
+          this.setMode(mode as Mode, menuMode as Mode | '')
+        }
       })
+    })
   }
 
   public flipImages = () => {
     document.querySelectorAll<HTMLElement>('[data-kt-img-dark]')?.forEach((item: HTMLElement) => {
       if (item.tagName === 'IMG') {
-        if (this.getMode() === 'dark' && item.hasAttribute('data-kt-img-dark')) {
-          item.setAttribute('data-kt-img-light', item.getAttribute('src') || '')
-          item.setAttribute('src', item.getAttribute('data-kt-img-dark') || '')
-        } else if (this.getMode() === 'light' && item.hasAttribute('data-kt-img-light')) {
-          item.setAttribute('data-kt-img-dark', item.getAttribute('src') || '')
-          item.setAttribute('src', item.getAttribute('data-kt-img-light') || '')
-        }
+        // if (
+        //   this.getMode() === 'dark' &&
+        //   item.hasAttribute('data-kt-img-dark')
+        // ) {
+        //   item.setAttribute(
+        //     'data-kt-img-light',
+        //     item.getAttribute('src') || '',
+        //   )
+        //   item.setAttribute(
+        //     'src',
+        //     item.getAttribute('data-kt-img-dark') || '',
+        //   )
+        // } else if (
+        this.getMode() === 'light' && item.hasAttribute('data-kt-img-light')
+        // ) {
+        item.setAttribute('data-kt-img-dark', item.getAttribute('src') || '')
+        item.setAttribute('src', item.getAttribute('data-kt-img-light') || '')
+        // }
       } else {
-        if (this.getMode() === 'dark' && item.hasAttribute('data-kt-img-dark')) {
-          item.setAttribute('data-kt-img-light', item.getAttribute('src') || '')
-          item.style.backgroundImage = "url('" + item.getAttribute('data-kt-img-dark') + "')"
-        } else if (this.getMode() === 'light' && item.hasAttribute('data-kt-img-light')) {
-          item.setAttribute('data-kt-img-dark', item.getAttribute('src') || '')
-          item.style.backgroundImage = "url('" + item.getAttribute('data-kt-img-light') + "')"
-        }
+        //   if (
+        //     this.getMode() === 'dark' &&
+        //     item.hasAttribute('data-kt-img-dark')
+        //   ) {
+        //     item.setAttribute(
+        //       'data-kt-img-light',
+        //       item.getAttribute('src') || '',
+        //     )
+        //     item.style.backgroundImage =
+        //       "url('" + item.getAttribute('data-kt-img-dark') + "')"
+        //   } else if (
+        //   this.getMode() === 'light' &&
+        //   item.hasAttribute('data-kt-img-light')
+        // ) {
+        item.setAttribute('data-kt-img-dark', item.getAttribute('src') || '')
+        item.style.backgroundImage = "url('" + item.getAttribute('data-kt-img-light') + "')"
+        //   }
       }
     })
   }

@@ -7,6 +7,9 @@ import {useFormik} from 'formik'
 import {getUserByToken, login} from '../core/_requests'
 import {toAbsoluteUrl} from '../../../../_metronic/helpers'
 import {useAuth} from '../core/Auth'
+import APICallService from '../../../../api/apiCallService'
+import {LOGIN} from '../../../../api/apiEndPoints'
+import {APIJSON} from '../../../../api/apiJSON/auth'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -31,20 +34,26 @@ const initialValues = {
   https://medium.com/@maurice.de.beijer/yup-validation-and-typescript-and-formik-6c342578a20e
 */
 
-export function Login() {
+export const Login = () => {
   const [loading, setLoading] = useState(false)
-  const {saveAuth, setCurrentUser} = useAuth()
+  const {saveAuth, saveCurrentUser} = useAuth()
 
-  const formik = useFormik({
+  const formik: any = useFormik({
     initialValues,
     validationSchema: loginSchema,
     onSubmit: async (values, {setStatus, setSubmitting}) => {
       setLoading(true)
       try {
-        const {data: auth} = await login(values.email, values.password)
-        saveAuth(auth)
-        const {data: user} = await getUserByToken(auth.api_token)
-        setCurrentUser(user)
+        let apiService = new APICallService(
+          LOGIN,
+          APIJSON.login({email: values.email, password: values.password})
+        )
+        let response = await apiService.callAPI()
+        if (response) {
+          saveAuth(response.token)
+          let user = response.user
+          saveCurrentUser(user)
+        }
       } catch (error) {
         console.error(error)
         saveAuth(undefined)
