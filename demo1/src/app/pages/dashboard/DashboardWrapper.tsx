@@ -51,6 +51,7 @@ const DashboardPage: FC = () => (
     {/* begin::Row */}
     <div className='row gy-5 gx-xl-8 mb-2'>
       <div className='col-xl-12'>
+        hiii
         <TablesWidget10 className='card-xxl-stretch mb-5 mb-xl-8 table-out' />
       </div>
     </div>
