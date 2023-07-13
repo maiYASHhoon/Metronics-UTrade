@@ -3,6 +3,7 @@ import clsx from 'clsx'
 import React, {useState} from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
 import {getLayoutFromLocalStorage, ILayout, LayoutSetup} from '../../../_metronic/layout/core'
+import Select from 'react-select'
 
 const BuilderPage: React.FC = () => {
   const [tab, setTab] = useState('Sidebar')
@@ -28,601 +29,568 @@ const BuilderPage: React.FC = () => {
       setResetLoading(false)
     }, 1000)
   }
+  const defaultOption = {value: 'Kigamboni district', label: 'Kigamboni district'}
+  const defaultOption2 = {value: 'All team members', label: 'All team members'}
+
+  const optionsDistrict = [
+    {value: 'Kigamboni district', label: 'Kigamboni district'},
+    {value: 'strawberry', label: 'Strawberry'},
+    {value: 'vanilla', label: 'Vanilla'},
+  ]
+  const optionsYear = [
+    {value: 'All team members', label: 'All team members'},
+    {value: 'June 2023', label: 'June 2023'},
+    {value: 'May 2023', label: 'May 2023'},
+  ]
+  const customStyles = {
+    control: (provided: any) => ({
+      ...provided,
+      width: 'auto',
+      height: '50px',
+      borderRadius: '8px',
+      border: 'solid 0.5px #e0e0df',
+      backgroundColor: '#f9f9f9',
+      fontSize: '15px',
+      fontWeight: 'bold',
+    }),
+  }
+  const customStyles2 = {
+    control: (provided: any) => ({
+      ...provided,
+      width: '176px',
+      height: '45px',
+      borderRadius: '8px',
+      border: 'solid 0.5px #e0e0df',
+      backgroundColor: '#f9f9f9',
+      fontSize: '15px',
+      fontWeight: 'bold',
+    }),
+  }
 
   return (
     <>
-      <div className='card mb-10'>
-        <div className='card-body d-flex align-items-center py-8'>
-          <div className='d-flex h-80px w-80px flex-shrink-0 flex-center position-relative'>
-            <KTSVG
-              path='/media/icons/duotune/abstract/abs051.svg'
-              className='svg-icon-primary position-absolute opacity-15'
-              svgClassName='h-80px w-80px'
-            />
-            <KTSVG
-              path='/media/icons/duotune/coding/cod009.svg'
-              className='svg-icon-3x svg-icon-primary position-absolute'
-            />
-          </div>
-
-          <div className='ms-6'>
-            <p className='list-unstyled text-gray-600 fw-bold fs-6 p-0 m-0'>
-              The layout builder is to assist your set and configure your preferred project layout
-              specifications and preview it in real-time.
-            </p>
-            <p className='list-unstyled text-gray-600 fw-bold fs-6 p-0 m-0'>
-              Also, you can configurate the Layout in the code (
-              <code>src/_metronic/layout/core/_LayoutConfig.ts</code> file). Don't forget clear your
-              local storage when you are changing _LayoutConfig.
-            </p>
-          </div>
+      <div className='row align-items-center notification-c'>
+        <div className='col-lg-12 d-flex justify-content-center fs-16 text-bold'>
+          <span className='fw-bold align-items-center'>
+            You need to assign team members for the newly onboarded customers.
+          </span>
         </div>
       </div>
 
-      <div className='card card-custom'>
-        <div className='card-header card-header-stretch overflow-auto'>
-          <ul
-            className='nav nav-stretch nav-line-tabs
-            fw-bold
-            border-transparent
-            flex-nowrap
-          '
-            role='tablist'
-          >
-            <li className='nav-item'>
-              <a
-                className={clsx(`nav-link cursor-pointer`, {active: tab === 'Sidebar'})}
-                onClick={() => setTab('Sidebar')}
-                role='tab'
-              >
-                Sidebar
+      <div className='row align-items-center mb-5 pt-5'>
+        <div className='col-lg-6 pt-4 mb-3'>
+          <h1 className='fs-22 text-bold'>Customers</h1>
+        </div>
+        <div className='col-lg-6 d-flex justify-content-end align-items-center gap-2 gap-lg-3'>
+          <div className='w-225px'>
+            <Select options={optionsDistrict} styles={customStyles} defaultValue={defaultOption} />
+          </div>
+          <div className='w-auto'>
+            <button className='btn btn-primary mb-1'>Add New Customer</button>
+          </div>
+        </div>
+      </div>
+      <div className='bg-light mb-3 border-2 rounded mb-8 pt-2'>
+        <div className='row align-items-center'>
+          <div className='col-lg-6 my-6'>
+            <div className='d-flex align-items-center  position-relative px-5'>
+              <KTSVG
+                path='/media/icons/duotune/general/gen021.svg'
+                className='svg-icon-1 position-absolute ms-6'
+              />
+              <input
+                type='text'
+                data-kt-user-table-filter='search'
+                className='form-control border search form-control-solid bg-white ps-14'
+                placeholder='Search by product name…'
+                // value={searchTerm}
+                // onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className='col-lg-6 d-flex justify-content-end align-items-center gap-2 gap-lg-3'>
+            <div className='auto'>
+              <span className='fs-16 fw-bold'>Filter products</span>
+              {/* <Select options={optionsDistrict} styles={customStyles} defaultValue={defaultOption} /> */}
+            </div>
+            <div className='w-225px mx-5'>
+              <Select options={optionsYear} styles={customStyles} defaultValue={defaultOption2} />
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* begin::Body */}
+      <div className='card'>
+        <div className='card-body py-3 table-out rounded'>
+          {/* begin::Table container */}
+          <div className='table-responsive '>
+            {/* begin::Table */}
+            <table className='table table-row-bordered table-row-light-300 align-middle gs-0 gy-4'>
+              {/* begin::Table head */}
+              <thead>
+                <tr className='fw-bold text-bold'>
+                  <th className='min-w-200px'>Customer name</th>
+                  <th className='min-w-200px'>Assigned team member</th>
+                  <th className='min-w-2000px'>Orders placed</th>
+                  <th className='min-w-120px'>Total Sales</th>
+                  <th className='min-w-100px text-end'></th>
+                </tr>
+              </thead>
+              {/* end::Table head */}
+              {/* begin::Table body */}
+              <tbody>
+                <tr>
+                  <td>
+                    <div className='d-flex align-items-center'>
+                      <div className='symbol symbol-45px me-5'>
+                        <img src={toAbsoluteUrl('/media/customers/1.png')} alt='' />
+                      </div>
+                      <div className='d-flex justify-content-start flex-column'>
+                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
+                          Patrick Richards
+                        </a>
+                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
+                          Maisha Supermarket
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <Select
+                      options={optionsDistrict}
+                      styles={customStyles2}
+                      // defaultValue={defaultOption}
+                    />
+                  </td>
+                  <td className='text-end'>
+                    <div className='d-flex flex-column w-100 me-2'>
+                      <div className='d-flex flex-stack mb-2'>
+                        <span className='text-center me-2 fs-7 fw-bold'>22</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span className='text-center fw-bold '>Tsh 1,000,000</span>
+                  </td>
+                  <td>
+                    <div className='d-flex justify-content-end flex-shrink-0'>
+                      <button className='btn btn-primary'>View details</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className='d-flex align-items-center'>
+                      <div className='symbol symbol-45px me-5'>
+                        <img src={toAbsoluteUrl('/media/customers/2.png')} alt='' />
+                      </div>
+                      <div className='d-flex justify-content-start flex-column'>
+                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
+                          Laurel Oliver
+                        </a>
+                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
+                          Kilimo Fresh Foods
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <Select
+                      options={optionsDistrict}
+                      styles={customStyles2}
+                      // defaultValue={defaultOption}
+                    />
+                  </td>
+                  <td className='text-end'>
+                    <div className='d-flex flex-column w-100 me-2'>
+                      <div className='d-flex flex-stack mb-2'>
+                        <span className='text-center me-2 fs-7 fw-bold'>17</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span className='text-center fw-bold '>TSh 462,128</span>
+                  </td>
+                  <td>
+                    <div className='d-flex justify-content-end flex-shrink-0'>
+                      <button className='btn btn-primary'>View details</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className='d-flex align-items-center'>
+                      <div className='symbol symbol-45px me-5'>
+                        <img src={toAbsoluteUrl('/media/customers/3.png')} alt='' />
+                      </div>
+                      <div className='d-flex justify-content-start flex-column'>
+                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
+                          Milkit Pop Chocolates
+                        </a>
+                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
+                          Kilimo Fresh Foods Africa LTD
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <Select
+                      options={optionsDistrict}
+                      styles={customStyles2}
+                      // defaultValue={defaultOption}
+                    />
+                  </td>
+                  <td className='text-end'>
+                    <div className='d-flex flex-column w-100 me-2'>
+                      <div className='d-flex flex-stack mb-2'>
+                        <span className='text-center me-2 fs-7 fw-bold'>11</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span className='text-center fw-bold '>TSh 225,000</span>
+                  </td>
+                  <td>
+                    <div className='d-flex justify-content-end flex-shrink-0'>
+                      <button className='btn btn-primary'>View details</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className='d-flex align-items-center'>
+                      <div className='symbol symbol-45px me-5'>
+                        <img src={toAbsoluteUrl('/media/customers/4.png')} alt='' />
+                      </div>
+                      <div className='d-flex justify-content-start flex-column'>
+                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
+                          Denise Jones
+                        </a>
+                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
+                          Zamzam Stationery...
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <Select
+                      options={optionsDistrict}
+                      styles={customStyles2}
+                      // defaultValue={defaultOption}
+                    />
+                  </td>
+                  <td className='text-end'>
+                    <div className='d-flex flex-column w-100 me-2'>
+                      <div className='d-flex flex-stack mb-2'>
+                        <span className='text-center me-2 fs-7 fw-bold'>07</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span className='text-center fw-bold '>Tsh 213,500</span>
+                  </td>
+                  <td>
+                    <div className='d-flex justify-content-end flex-shrink-0'>
+                      <button className='btn btn-primary'>View details</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className='d-flex align-items-center'>
+                      <div className='symbol symbol-45px me-5'>
+                        <img src={toAbsoluteUrl('/media/customers/5.png')} alt='' />
+                      </div>
+                      <div className='d-flex justify-content-start flex-column'>
+                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
+                          Matthew Powell
+                        </a>
+                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
+                          Afribon
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <Select
+                      options={optionsDistrict}
+                      styles={customStyles2}
+                      // defaultValue={defaultOption}
+                    />
+                  </td>
+                  <td className='text-end'>
+                    <div className='d-flex flex-column w-100 me-2'>
+                      <div className='d-flex flex-stack mb-2'>
+                        <span className='text-center me-2 fs-7 fw-bold'>03</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span className='text-center fw-bold '>Tsh 150,000</span>
+                  </td>
+                  <td>
+                    <div className='d-flex justify-content-end flex-shrink-0'>
+                      <button className='btn btn-primary'>View details</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className='d-flex align-items-center'>
+                      <div className='symbol symbol-45px me-5'>
+                        <img src={toAbsoluteUrl('/media/customers/6.png')} alt='' />
+                      </div>
+                      <div className='d-flex justify-content-start flex-column'>
+                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
+                          Barbara Mendoza
+                        </a>
+                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
+                          Omros Foods
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <Select
+                      options={optionsDistrict}
+                      styles={customStyles2}
+                      // defaultValue={defaultOption}
+                    />
+                  </td>
+                  <td className='text-end'>
+                    <div className='d-flex flex-column w-100 me-2'>
+                      <div className='d-flex flex-stack mb-2'>
+                        <span className='text-center me-2 fs-7 fw-bold'>03</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span className='text-center fw-bold '>Tsh 150,000</span>
+                  </td>
+                  <td>
+                    <div className='d-flex justify-content-end flex-shrink-0'>
+                      <button className='btn btn-primary'>View details</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className='d-flex align-items-center'>
+                      <div className='symbol symbol-45px me-5'>
+                        <img src={toAbsoluteUrl('/media/customers/7.png')} alt='' />
+                      </div>
+                      <div className='d-flex justify-content-start flex-column'>
+                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
+                          Kathy Clark
+                        </a>
+                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
+                          Super Meals Limited
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <Select
+                      options={optionsDistrict}
+                      styles={customStyles2}
+                      // defaultValue={defaultOption}
+                    />
+                  </td>
+                  <td className='text-end'>
+                    <div className='d-flex flex-column w-100 me-2'>
+                      <div className='d-flex flex-stack mb-2'>
+                        <span className='text-center me-2 fs-7 fw-bold'>03</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span className='text-center fw-bold '>Tsh 150,000</span>
+                  </td>
+                  <td>
+                    <div className='d-flex justify-content-end flex-shrink-0'>
+                      <button className='btn btn-primary'>View details</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className='d-flex align-items-center'>
+                      <div className='symbol symbol-45px me-5'>
+                        <img src={toAbsoluteUrl('/media/customers/8.png')} alt='' />
+                      </div>
+                      <div className='d-flex justify-content-start flex-column'>
+                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
+                          Barbara Mendoza
+                        </a>
+                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
+                          MacLeans BeneCIB...
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <Select
+                      options={optionsDistrict}
+                      styles={customStyles2}
+                      // defaultValue={defaultOption}
+                    />
+                  </td>
+                  <td className='text-end'>
+                    <div className='d-flex flex-column w-100 me-2'>
+                      <div className='d-flex flex-stack mb-2'>
+                        <span className='text-center me-2 fs-7 fw-bold'>03</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span className='text-center fw-bold '>Tsh 150,000</span>
+                  </td>
+                  <td>
+                    <div className='d-flex justify-content-end flex-shrink-0'>
+                      <button className='btn btn-primary'>View details</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className='d-flex align-items-center'>
+                      <div className='symbol symbol-45px me-5'>
+                        <img src={toAbsoluteUrl('/media/customers/9.png')} alt='' />
+                      </div>
+                      <div className='d-flex justify-content-start flex-column'>
+                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
+                          Barbara Mendoza
+                        </a>
+                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
+                          Nile Perch Fisherie...
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <Select
+                      options={optionsDistrict}
+                      styles={customStyles2}
+                      // defaultValue={defaultOption}
+                    />
+                  </td>
+                  <td className='text-end'>
+                    <div className='d-flex flex-column w-100 me-2'>
+                      <div className='d-flex flex-stack mb-2'>
+                        <span className='text-center me-2 fs-7 fw-bold'>03</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span className='text-center fw-bold '>Tsh 150,000</span>
+                  </td>
+                  <td>
+                    <div className='d-flex justify-content-end flex-shrink-0'>
+                      <button className='btn btn-primary'>View details</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div className='d-flex align-items-center'>
+                      <div className='symbol symbol-45px me-5'>
+                        <img src={toAbsoluteUrl('/media/customers/10.png')} alt='' />
+                      </div>
+                      <div className='d-flex justify-content-start flex-column'>
+                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
+                          Barbara Mendoza
+                        </a>
+                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
+                          Elven Agri
+                        </span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <Select
+                      options={optionsDistrict}
+                      styles={customStyles2}
+                      // defaultValue={defaultOption}
+                    />
+                  </td>
+                  <td className='text-end'>
+                    <div className='d-flex flex-column w-100 me-2'>
+                      <div className='d-flex flex-stack mb-2'>
+                        <span className='text-center me-2 fs-7 fw-bold'>03</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span className='text-center fw-bold '>Tsh 150,000</span>
+                  </td>
+                  <td>
+                    <div className='d-flex justify-content-end flex-shrink-0'>
+                      <button className='btn btn-primary'>View details</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+              {/* end::Table body */}
+            </table>
+            {/* end::Table */}
+          </div>
+          {/* end::Table container */}
+        </div>
+        <div className='d-flex flex-stack flex-wrap pt-10'>
+          <div className='fs-6 fw-bold text-gray-700'>Showing 1 to 10 of 50 entries</div>
+
+          <ul className='pagination'>
+            <li className='page-item previous'>
+              <a href='#' className='page-link'>
+                <i className='previous'></i>
               </a>
             </li>
-            <li className='nav-item'>
-              <a
-                className={clsx(`nav-link cursor-pointer`, {active: tab === 'Header'})}
-                onClick={() => setTab('Header')}
-                role='tab'
-              >
-                Header
+
+            <li className='page-item active'>
+              <a href='#' className='page-link'>
+                1
               </a>
             </li>
-            <li className='nav-item'>
-              <a
-                className={clsx(`nav-link cursor-pointer`, {active: tab === 'Toolbar'})}
-                onClick={() => setTab('Toolbar')}
-                role='tab'
-              >
-                Toolbar
+
+            <li className='page-item'>
+              <a href='#' className='page-link'>
+                2
+              </a>
+            </li>
+
+            <li className='page-item'>
+              <a href='#' className='page-link'>
+                3
+              </a>
+            </li>
+
+            <li className='page-item'>
+              <a href='#' className='page-link'>
+                4
+              </a>
+            </li>
+
+            <li className='page-item'>
+              <a href='#' className='page-link'>
+                5
+              </a>
+            </li>
+
+            <li className='page-item'>
+              <a href='#' className='page-link'>
+                6
+              </a>
+            </li>
+
+            <li className='page-item next'>
+              <a href='#' className='page-link'>
+                <i className='next'></i>
               </a>
             </li>
           </ul>
         </div>
-
-        <form className='form'>
-          <div className='card-body'>
-            <div className='tab-content pt-3'>
-              <div className={clsx('tab-pane', {active: tab === 'Sidebar'})}>
-                <div className='form-group d-flex flex-stack'>
-                  <div className='d-flex flex-column'>
-                    <h4 className='fw-bold text-dark'>Fixed</h4>
-                    <div className='fs-7 fw-semibold text-muted'>Fixed sidebar mode</div>
-                  </div>
-                  <div className='d-flex justify-content-end'>
-                    <div className='form-check form-check-custom form-check-solid form-check-success form-switch'>
-                      <div
-                        className='form-check form-check-custom form-check-solid form-switch
-                    mb-2'
-                      >
-                        <input
-                          className='form-check-input'
-                          type='checkbox'
-                          name='model.app.sidebar.default.fixed.desktop'
-                          checked={config.app?.sidebar?.default?.fixed?.desktop}
-                          onChange={() => {
-                            const con = {...config}
-                            if (
-                              con.app &&
-                              con.app.sidebar &&
-                              con.app.sidebar.default &&
-                              con.app.sidebar.default.fixed
-                            ) {
-                              con.app.sidebar.default.fixed.desktop =
-                                !con.app.sidebar.default.fixed.desktop
-                              setConfig({...con})
-                            }
-                          }}
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className='separator separator-dashed my-6'></div>
-                <div className='form-group d-flex flex-stack'>
-                  <div className='d-flex flex-column'>
-                    <h4 className='fw-bold text-dark'>Minimize</h4>
-                    <div className='fs-7 fw-semibold text-muted'>Sidebar minimize mode</div>
-                  </div>
-                  <div className='d-flex justify-content-end'>
-                    <div className='form-check form-check-custom form-check-solid form-check-success form-switch'>
-                      <div
-                        className='
-                form-check form-check-custom form-check-solid form-check-success form-switch
-                  '
-                      >
-                        <input
-                          className='form-check-input'
-                          type='checkbox'
-                          name='model.app.sidebar.default.minimize.desktop.enabled'
-                          id='kt_builder_sidebar_minimize_desktop_enabled'
-                          checked={config.app?.sidebar?.default?.minimize?.desktop?.enabled}
-                          onChange={() => {
-                            const con = {...config}
-                            if (
-                              con.app &&
-                              con.app.sidebar &&
-                              con.app.sidebar.default &&
-                              con.app.sidebar.default.minimize &&
-                              con.app.sidebar.default.minimize.desktop
-                            ) {
-                              con.app.sidebar.default.minimize.desktop.enabled =
-                                !con.app.sidebar.default.minimize.desktop.enabled
-                              setConfig({...con})
-                            }
-                          }}
-                        />
-                        <label
-                          className='form-check-label text-gray-700 fw-bold'
-                          htmlFor='kt_builder_sidebar_minimize_desktop_enabled'
-                          data-bs-toggle='tooltip'
-                          data-kt-initialized='1'
-                        >
-                          Minimize Toggle
-                        </label>
-                      </div>
-                      <div
-                        className='
-                form-check form-check-custom form-check-solid form-check-success form-switch ms-10
-                  '
-                      >
-                        <input
-                          className='form-check-input'
-                          type='checkbox'
-                          id='kt_builder_sidebar_minimize_desktop_hoverable'
-                          name='model.app.sidebar.default.minimize.desktop.hoverable'
-                          checked={config.app?.sidebar?.default?.minimize?.desktop?.hoverable}
-                          onChange={() => {
-                            const con = {...config}
-                            if (
-                              con.app &&
-                              con.app.sidebar &&
-                              con.app.sidebar.default &&
-                              con.app.sidebar.default.minimize &&
-                              con.app.sidebar.default.minimize.desktop
-                            ) {
-                              con.app.sidebar.default.minimize.desktop.hoverable =
-                                !con.app.sidebar.default.minimize.desktop.hoverable
-                              setConfig({...con})
-                            }
-                          }}
-                        />
-                        <label
-                          className='form-check-label text-gray-700 fw-bold'
-                          htmlFor='kt_builder_sidebar_minimize_desktop_hoverable'
-                          data-bs-toggle='tooltip'
-                          data-kt-initialized='1'
-                        >
-                          Hoverable
-                        </label>
-                      </div>
-                      <div
-                        className='
-                form-check form-check-custom form-check-solid form-check-success form-switch ms-10
-                  '
-                      >
-                        <input
-                          className='form-check-input'
-                          type='checkbox'
-                          id='kt_builder_sidebar_minimize_desktop_default'
-                          name='model.app.sidebar.default.minimize.desktop.default'
-                          checked={config.app?.sidebar?.default?.minimize?.desktop?.default}
-                          onChange={() => {
-                            const con = {...config}
-                            if (
-                              con.app &&
-                              con.app.sidebar &&
-                              con.app.sidebar.default &&
-                              con.app.sidebar.default.minimize &&
-                              con.app.sidebar.default.minimize.desktop
-                            ) {
-                              con.app.sidebar.default.minimize.desktop.default =
-                                !con.app.sidebar.default.minimize.desktop.default
-                              setConfig({...con})
-                            }
-                          }}
-                        />
-                        <label
-                          className='form-check-label text-gray-700 fw-bold'
-                          htmlFor='kt_builder_sidebar_minimize_desktop_default'
-                          data-bs-toggle='tooltip'
-                          data-kt-initialized='1'
-                        >
-                          Default Minimized
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className={clsx('tab-pane', {active: tab === 'Header'})}>
-                <div className='form-group d-flex flex-stack'>
-                  <div className='d-flex flex-column'>
-                    <h4 className='fw-bold text-dark'>Fixed</h4>
-                    <div className='fs-7 fw-semibold text-muted'>Fixed header mode</div>
-                  </div>
-                  <div className='d-flex justify-content-end'>
-                    <div className='form-check form-check-custom form-check-solid form-check-success form-switch'>
-                      <div
-                        className='
-                    form-check form-check-custom form-check-solid form-switch
-                    mb-2
-                  '
-                      >
-                        <input
-                          className='form-check-input'
-                          type='checkbox'
-                          name='model.app.header.default.fixed.desktop'
-                          checked={config.app?.header?.default?.fixed?.desktop}
-                          onChange={() => {
-                            const con = {...config}
-                            if (
-                              con.app &&
-                              con.app.header &&
-                              con.app.header.default &&
-                              con.app.header.default.fixed
-                            ) {
-                              con.app.header.default.fixed.desktop =
-                                !con.app.header.default.fixed.desktop
-                              setConfig({...con})
-                            }
-                          }}
-                          // [(ngModel)]="model.app.header.default.fixed.desktop"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className='separator separator-dashed my-6'></div>
-                <div className='form-group d-flex flex-stack'>
-                  <div className='d-flex flex-column'>
-                    <h4 className='fw-bold text-dark'>Content</h4>
-                    <div className='fs-7 fw-semibold text-muted'>Header content type</div>
-                  </div>
-                  <div className='d-flex justify-content-end'>
-                    <div className='form-check form-check-custom form-check-success form-check-solid form-check-sm ms-10'>
-                      <input
-                        className='form-check-input'
-                        type='radio'
-                        checked={config.app?.header?.default?.content === 'menu'}
-                        onChange={() => {
-                          const con = {...config}
-                          if (con.app && con.app.header && con.app.header.default) {
-                            con.app.header.default.content = 'menu'
-                            setConfig({...con})
-                          }
-                        }}
-                        // [(ngModel)]="model.app.header.default.content}
-                        value='menu'
-                        id='kt_builder_header_content_menu'
-                        name='model.app.header.default.content'
-                      />
-                      <label
-                        className='form-check-label text-gray-700 fw-bold text-nowrap'
-                        htmlFor='kt_builder_header_content_menu'
-                      >
-                        Menu
-                      </label>
-                    </div>
-                    <div className='form-check form-check-custom form-check-success form-check-solid form-check-sm ms-10'>
-                      <input
-                        className='form-check-input'
-                        type='radio'
-                        value='page-title'
-                        id='kt_builder_header_content_page-title'
-                        checked={config.app?.header?.default?.content === 'page-title'}
-                        onChange={() => {
-                          const con = {...config}
-                          if (con.app && con.app.header && con.app.header.default) {
-                            con.app.header.default.content = 'page-title'
-                            setConfig({...con})
-                          }
-                        }}
-                      />
-                      <label
-                        className='form-check-label text-gray-700 fw-bold text-nowrap'
-                        htmlFor='kt_builder_header_content_page-title'
-                      >
-                        Page Title
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className={clsx('tab-pane', {active: tab === 'Toolbar'})}>
-                <div className='form-group d-flex flex-stack'>
-                  <div className='d-flex flex-column'>
-                    <h4 className='fw-bold text-dark'>Fixed</h4>
-                    <div className='fs-7 fw-semibold text-muted'>Fixed toolbar mode</div>
-                  </div>
-                  <div className='d-flex justify-content-end'>
-                    <div className='d-flex justify-content-end'>
-                      <div className='form-check form-check-custom form-check-solid form-check-success form-switch me-10'>
-                        <input
-                          className='form-check-input w-45px h-30px'
-                          type='checkbox'
-                          id='kt_builder_toolbar_fixed_desktop'
-                          name='model.app.toolbar.fixed.desktop'
-                          checked={config.app?.toolbar?.fixed?.desktop}
-                          onChange={() => {
-                            const con = {...config}
-                            if (con.app && con.app.toolbar && con.app.toolbar.fixed) {
-                              con.app.toolbar.fixed.desktop = !con.app.toolbar.fixed.desktop
-                              setConfig({...con})
-                            }
-                          }}
-                        />
-                        <label
-                          className='form-check-label text-gray-700 fw-bold'
-                          htmlFor='kt_builder_toolbar_fixed_desktop'
-                        >
-                          Desktop Mode
-                        </label>
-                      </div>
-                      <div className='form-check form-check-custom form-check-solid form-check-success form-switch'>
-                        <input
-                          className='form-check-input w-45px h-30px'
-                          type='checkbox'
-                          name='model.app.toolbar.fixed.mobile'
-                          checked={config.app?.toolbar?.fixed?.mobile}
-                          onChange={() => {
-                            const con = {...config}
-                            if (con.app && con.app.toolbar && con.app.toolbar.fixed) {
-                              con.app.toolbar.fixed.mobile = !con.app.toolbar.fixed.mobile
-                              setConfig({...con})
-                            }
-                          }}
-                          id='kt_builder_toolbar_fixed_mobile'
-                        />
-                        <label
-                          className='form-check-label text-gray-700 fw-bold'
-                          htmlFor='kt_builder_toolbar_fixed_mobile'
-                        >
-                          Mobile Mode
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className='separator separator-dashed my-6'></div>
-                <div className='mb-6'>
-                  <h4 className='fw-bold text-dark'>Layout</h4>
-                  <div className='fw-semibold text-muted fs-7 d-block lh-1'>
-                    Select a toolbar layout
-                  </div>
-                </div>
-
-                <div
-                  data-kt-buttons='true'
-                  data-kt-buttons-target='.form-check-image:not(.disabled),.form-check-input:not([disabled])'
-                  data-kt-initialized='1'
-                >
-                  <label
-                    className={clsx('form-check-image form-check-success mb-10', {
-                      active: config.app?.toolbar?.layout === 'classic',
-                    })}
-                  >
-                    <div className='form-check-wrapper'>
-                      <img
-                        src={toAbsoluteUrl('/media/misc/layout/toolbar-classic.png')}
-                        className='mw-100'
-                        alt=''
-                      />
-                    </div>
-                    <div className='form-check form-check-custom form-check-success form-check-sm form-check-solid'>
-                      <input
-                        className='form-check-input'
-                        type='radio'
-                        // checked="checked"
-                        value='classic'
-                        name='model.app.toolbar.layout'
-                        checked={config.app?.toolbar?.layout === 'classic'}
-                        onChange={() => {
-                          const con = {...config}
-                          if (con.app && con.app.toolbar) {
-                            con.app.toolbar.layout = 'classic'
-                            setConfig({...con})
-                          }
-                        }}
-                        // [(ngModel)]="model.app.toolbar.layout"
-                      />
-                      <div className='form-check-label text-gray-800'>Classic</div>
-                    </div>
-                  </label>
-
-                  <label
-                    className={clsx('form-check-image form-check-success mb-10', {
-                      active: config.app?.toolbar?.layout === 'saas',
-                    })}
-                  >
-                    <div className='form-check-wrapper'>
-                      <img
-                        src={toAbsoluteUrl('/media/misc/layout/toolbar-saas.png')}
-                        className='mw-100'
-                        alt=''
-                      />
-                    </div>
-                    <div className='form-check form-check-custom form-check-success form-check-sm form-check-solid'>
-                      <input
-                        className='form-check-input'
-                        type='radio'
-                        value='saas'
-                        name='model.app.toolbar.layout'
-                        checked={config.app?.toolbar?.layout === 'saas'}
-                        onChange={() => {
-                          const con = {...config}
-                          if (con.app && con.app.toolbar) {
-                            con.app.toolbar.layout = 'saas'
-                            setConfig({...con})
-                          }
-                        }}
-                        // [(ngModel)]="model.app.toolbar.layout"
-                      />
-                      <div className='form-check-label text-gray-800'>SaaS</div>
-                    </div>
-                  </label>
-
-                  <label
-                    className={clsx('form-check-image form-check-success mb-10', {
-                      active: config.app?.toolbar?.layout === 'accounting',
-                    })}
-                  >
-                    <div className='form-check-wrapper'>
-                      <img
-                        src={toAbsoluteUrl('/media/misc/layout/toolbar-accounting.png')}
-                        className='mw-100'
-                        alt=''
-                      />
-                    </div>
-                    <div className='form-check form-check-custom form-check-success form-check-sm form-check-solid'>
-                      <input
-                        className='form-check-input'
-                        type='radio'
-                        value='accounting'
-                        name='model.app.toolbar.layout'
-                        checked={config.app?.toolbar?.layout === 'accounting'}
-                        onChange={() => {
-                          const con = {...config}
-                          if (con.app && con.app.toolbar) {
-                            con.app.toolbar.layout = 'accounting'
-                            setConfig({...con})
-                          }
-                        }}
-                        // [(ngModel)]="model.app.toolbar.layout"
-                      />
-                      <div className='form-check-label text-gray-800'>Accounting</div>
-                    </div>
-                  </label>
-
-                  <label
-                    className={clsx('form-check-image form-check-success mb-10', {
-                      active: config.app?.toolbar?.layout === 'extended',
-                    })} // [ngClass]="{'active': model.app.toolbar.layout === 'extended'}"
-                  >
-                    <div className='form-check-wrapper'>
-                      <img
-                        src={toAbsoluteUrl('/media/misc/layout/toolbar-extended.png')}
-                        className='mw-100'
-                        alt=''
-                      />
-                    </div>
-                    <div className='form-check form-check-custom form-check-success form-check-sm form-check-solid'>
-                      <input
-                        className='form-check-input'
-                        type='radio'
-                        value='extended'
-                        name='model.app.toolbar.layout'
-                        checked={config.app?.toolbar?.layout === 'extended'}
-                        onChange={() => {
-                          const con = {...config}
-                          if (con.app && con.app.toolbar) {
-                            con.app.toolbar.layout = 'extended'
-                            setConfig({...con})
-                          }
-                        }}
-                        // [(ngModel)]="model.app.toolbar.layout"
-                      />
-                      <div className='form-check-label text-gray-800'>Extended</div>
-                    </div>
-                  </label>
-
-                  <label
-                    className={clsx('form-check-image form-check-success mb-10', {
-                      active: config.app?.toolbar?.layout === 'reports',
-                    })}
-                  >
-                    {/* begin::Image */}
-                    <div className='form-check-wrapper'>
-                      <img
-                        src={toAbsoluteUrl('/media/misc/layout/toolbar-reports.png')}
-                        className='mw-100'
-                        alt=''
-                      />
-                    </div>
-                    {/* end::Image */}
-                    {/* begin::Check */}
-                    <div className='form-check form-check-custom form-check-success form-check-sm form-check-solid'>
-                      <input
-                        className='form-check-input'
-                        type='radio'
-                        value='reports'
-                        name='model.app.toolbar.layout'
-                        checked={config.app?.toolbar?.layout === 'reports'}
-                        onChange={() => {
-                          const con = {...config}
-                          if (con.app && con.app.toolbar) {
-                            con.app.toolbar.layout = 'reports'
-                            setConfig({...con})
-                          }
-                        }}
-                        // [(ngModel)]="model.app.toolbar.layout"
-                      />
-                      {/* begin::Label */}
-                      <div className='form-check-label text-gray-800'>Reports</div>
-                      {/* end::Label */}
-                    </div>
-                    {/* end::Check */}
-                  </label>
-                  {/* end::Option */}
-                </div>
-              </div>
-            </div>
-
-            <div className='card-footer py-6'>
-              <div className='row'>
-                <div className='col-lg-3'></div>
-                <div className='col-lg-9'>
-                  <button type='button' onClick={updateConfig} className='btn btn-primary me-2'>
-                    {!configLoading && <span className='indicator-label'>Preview</span>}
-                    {configLoading && (
-                      <span className='indicator-progress' style={{display: 'block'}}>
-                        Please wait...{' '}
-                        <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-                      </span>
-                    )}
-                  </button>
-
-                  <button
-                    type='button'
-                    id='kt_layout_builder_reset'
-                    className='btn btn-active-light btn-color-muted'
-                    onClick={reset}
-                  >
-                    {!resetLoading && <span className='indicator-label'>Reset</span>}
-                    {resetLoading && (
-                      <span className='indicator-progress' style={{display: 'block'}}>
-                        Please wait...{' '}
-                        <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-                      </span>
-                    )}
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </form>
       </div>
+      {/* begin::Body */}
     </>
   )
 }
