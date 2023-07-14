@@ -22,8 +22,18 @@ const customStyles = {
 
 const defaultOption2 = {value: 'Select business type', label: 'Select business type'}
 
+//File Upload
 const AddCustomer: FC = () => {
   const [loading, setLoading] = useState(false)
+  const [file, setFile] = useState<File | null>(null)
+  const [imageUrl, setImageUrl] = useState('')
+
+  function handleUpload(event: any) {
+    const uploadedFile = event.target.files[0]
+    setFile(uploadedFile)
+    setImageUrl(uploadedFile ? URL.createObjectURL(uploadedFile) : '')
+  }
+  console.log(setFile)
 
   return (
     <>
@@ -38,16 +48,40 @@ const AddCustomer: FC = () => {
       <div className='row g-9'>
         <div className='col-lg-4 col-xxl-3'>
           <div className='card bg-light rounded-2 ' style={{boxShadow: 'none'}}>
-            <div className='card-body '>
+            <div className='card-body'>
               <div className='me-2 text-left mb-2'>
                 <span className='fw-bolder text-gray-800 fs-22'>Business Logo</span>
               </div>
               <div className='pt-1 d-flex justify-content-center align-items-center'>
-                <img
-                  className='upload-logo'
-                  src={toAbsoluteUrl('/media/customers/upload.png')}
-                  alt=''
-                />
+                <div className='upload-area'>
+                  {!file ? (
+                    <>
+                      <label htmlFor='logo-upload' className='upload-label'>
+                        <input
+                          id='logo-upload'
+                          type='file'
+                          onChange={handleUpload}
+                          style={{display: 'none'}}
+                        />
+                        <img
+                          className='upload-logo'
+                          src={toAbsoluteUrl('/media/customers/upload.png')}
+                          alt=''
+                        />
+                      </label>
+                    </>
+                  ) : (
+                    <>
+                      <div className='symbol symbol-200px'>
+                        <img
+                          className='object-fit-contain'
+                          src={imageUrl}
+                          alt={file ? file.name : ''}
+                        />
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </div>

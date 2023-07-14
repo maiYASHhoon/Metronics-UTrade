@@ -22,18 +22,18 @@ const SidebarMenuMain = () => {
         title='Customer'
         fontIcon='bi-layers'
       />
-      <SidebarMenuItem
+      {/* <SidebarMenuItem
         to='/'
         icon='/media/icons/duotune/general/gen019.svg'
         title='My Team'
         fontIcon='bi-layers'
-      />
-      <SidebarMenuItem
+      /> */}
+      {/* <SidebarMenuItem
         to='/'
         icon='/media/icons/duotune/general/gen019.svg'
         title='Order'
         fontIcon='bi-layers'
-      />
+      /> */}
     </>
   )
 }
