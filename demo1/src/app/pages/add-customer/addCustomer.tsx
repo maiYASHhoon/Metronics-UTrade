@@ -20,8 +20,6 @@ const customStyles = {
   }),
 }
 
-const defaultOption2 = {value: 'Select business type', label: 'Select business type'}
-
 //File Upload
 const AddCustomer: FC = () => {
   const [loading, setLoading] = useState(false)
@@ -33,7 +31,116 @@ const AddCustomer: FC = () => {
     setFile(uploadedFile)
     setImageUrl(uploadedFile ? URL.createObjectURL(uploadedFile) : '')
   }
-  console.log(setFile)
+
+  // Custom Validations
+
+  /*******************Name Validation****************************/
+
+  const [name, setName] = useState('')
+  const [nameError, setNameError] = useState('')
+  const validateName = () => {
+    if (name.trim() === '') {
+      setNameError('Name is required')
+    } else if (name.trim().length < 3) {
+      setNameError('Name should be at least 3 characters long')
+    } else {
+      setNameError('')
+    }
+  }
+  /*******************BusinessName Validation****************************/
+
+  const [businessName, businessSetName] = useState('')
+  const [businessNameError, businessSetNameError] = useState('')
+  const validateBusinessName = () => {
+    if (name.trim() === '') {
+      businessSetNameError('Business Name is required')
+    } else if (name.trim().length < 3) {
+      businessSetNameError('Name should be at least 3 characters long')
+    } else {
+      businessSetNameError('')
+    }
+  }
+
+  /*******************Number Validation****************************/
+
+  const [phoneNumber, setPhoneNumber] = useState('')
+  const [phoneNumberError, setPhoneNumberError] = useState('')
+  const [phoneNumberTouched, setPhoneNumberTouched] = useState(false)
+  const validatePhoneNumber = () => {
+    const phoneRegex = /^\d{10}$/
+
+    if (phoneNumber.trim() === '') {
+      setPhoneNumberError('Phone number is required')
+    } else if (!phoneRegex.test(phoneNumber)) {
+      setPhoneNumberError('Invalid phone number format')
+    } else {
+      setPhoneNumberError('')
+    }
+  }
+  const handlePhoneNumberChange = (e: {target: {value: React.SetStateAction<string>}}) => {
+    setPhoneNumber(e.target.value)
+  }
+
+  const handlePhoneNumberBlur = () => {
+    setPhoneNumberTouched(true)
+    validatePhoneNumber()
+  }
+
+  /******************* TIN Number Validation****************************/
+
+  const [tinNumber, setTinNumber] = useState('')
+  const [tinNumberError, setTinNumberError] = useState('')
+  const validateTinNumber = () => {
+    if (tinNumber.trim() === '') {
+      setTinNumberError('Phone TIN is required')
+    } else if (tinNumber.trim().length < 12) {
+      setTinNumberError('Should be 12 numbers')
+    } else {
+      setTinNumberError('')
+    }
+  }
+
+  /******************* VAT Number Validation****************************/
+
+  const [vatNumber, setVatNumber] = useState('')
+  const [vatNumberError, setVatNumberError] = useState('')
+  const validateVatNumber = () => {
+    if (vatNumber.trim() === '') {
+      setVatNumberError('VAT number is required')
+    } else if (vatNumber.trim().length < 12) {
+      setVatNumberError('Should be 12 numbers')
+    } else {
+      setVatNumberError('')
+    }
+  }
+  /*******************Email Validation****************************/
+
+  const [email, setEmail] = useState('')
+  const [emailError, setEmailError] = useState('')
+  const validateEmail = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    if (email.trim() === '') {
+      setEmailError('Email is required')
+    } else if (!emailRegex.test(email)) {
+      setEmailError('Invalid email format')
+    } else {
+      setEmailError('')
+    }
+  }
+
+  /*******************Address Validation****************************/
+
+  const [address, setAddress] = useState('')
+  const [addressError, setAddressError] = useState('')
+
+  const validateAddress = () => {
+    if (address.trim() === '') {
+      setAddressError('Address is required')
+    } else {
+      setAddressError('')
+    }
+  }
 
   return (
     <>
@@ -98,21 +205,29 @@ const AddCustomer: FC = () => {
                   <div className='row'>
                     <div className='col-lg-6 '>
                       <div className='mb-2 pt-2 fs-16 fw-bolder'>
-                        <span>Name</span>
+                        <span className='required'>Name</span>
                       </div>
                       <div className='fv-row mb-2'>
                         <input
                           placeholder='Type here....'
                           className={clsx('form-control bg-white')}
-                          type='email'
-                          name='email'
+                          type='name'
+                          name='name'
                           autoComplete='off'
+                          value={name}
+                          onBlur={validateName}
+                          onChange={(e) => setName(e.target.value)}
                         />
+                        <div className='fv-plugins-message-container'>
+                          <div className='fv-help-block text-start'>
+                            <span role='alert'>{nameError && <div>{nameError}</div>}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div className='col-lg-6'>
                       <div className='mb-2 pt-2 fw-bolder fs-16'>
-                        <span>Email</span>
+                        <span className='required'>Email</span>
                       </div>
                       <div className='fv-row mb-2'>
                         <input
@@ -121,14 +236,22 @@ const AddCustomer: FC = () => {
                           type='email'
                           name='email'
                           autoComplete='off'
+                          value={email}
+                          onBlur={validateEmail}
+                          onChange={(e) => setEmail(e.target.value)}
                         />
+                        <div className='fv-plugins-message-container'>
+                          <div className='fv-help-block text-start'>
+                            <span role='alert'>{emailError && <div>{emailError}</div>}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div className='row'>
                     <div className='col-lg-6 pt-5'>
                       <div className='mb-2 fs-16 fw-bold'>
-                        <span>Phone number</span>
+                        <span className='required'>Phone number</span>
                       </div>
 
                       <div className='input-group'>
@@ -140,8 +263,20 @@ const AddCustomer: FC = () => {
                             placeholder='phone number...'
                             type='string'
                             autoComplete='off'
+                            value={phoneNumber}
+                            onChange={handlePhoneNumberChange}
+                            onBlur={handlePhoneNumberBlur}
                             className={clsx('form-control bg-white ')}
                           />
+                        </div>
+                      </div>
+                      <div className='fv-plugins-message-container'>
+                        <div className='fv-help-block text-start'>
+                          <span role='alert'>
+                            {phoneNumberTouched && phoneNumberError && (
+                              <div>{phoneNumberError}</div>
+                            )}
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -159,73 +294,107 @@ const AddCustomer: FC = () => {
                   <div className='row'>
                     <div className='col-lg-6 '>
                       <div className='mb-2 pt-2 fs-16 fw-bolder'>
-                        <span>Name</span>
+                        <span className='required'>Name</span>
                       </div>
                       <div className='fv-row mb-2'>
                         <input
                           placeholder='Type here....'
                           className={clsx('form-control bg-white')}
-                          type='email'
-                          name='email'
+                          type='text'
+                          name='name'
                           autoComplete='off'
+                          value={businessName}
+                          onBlur={validateBusinessName}
+                          onChange={(e) => businessSetName(e.target.value)}
                         />
+                        <div className='fv-plugins-message-container'>
+                          <div className='fv-help-block text-start'>
+                            <span role='alert'>
+                              {businessNameError && <div>{businessNameError}</div>}
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div className='col-lg-6'>
                       <div className='mb-2 pt-2 fw-bolder fs-16'>
-                        <span>Email</span>
+                        <span className='required'>Type</span>
                       </div>
                       <div className='fv-row mb-2'>
-                        <Select
-                          options={optionsYear}
-                          styles={customStyles}
-                          defaultValue={defaultOption2}
-                        />
+                        <Select options={optionsYear} styles={customStyles} />
                       </div>
                     </div>
                   </div>
                   <div className='row'>
                     <div className='col-lg-12 pt-5'>
                       <div className='mb-2 fs-16 fw-bolder'>
-                        <span>Address</span>
+                        <span className='required'>Address</span>
                       </div>
                       <div className='fv-row mb-2'>
                         <input
                           placeholder='Type here....'
                           className={clsx('form-control bg-white')}
-                          type='email'
-                          name='email'
+                          type='text'
+                          name='address'
                           autoComplete='off'
-                        />
+                          value={address}
+                          onBlur={validateAddress}
+                          onChange={(e) => setAddress(e.target.value)}
+                        />{' '}
+                        <div className='fv-plugins-message-container'>
+                          <div className='fv-help-block text-start'>
+                            <span role='alert'>{addressError && <div>{addressError}</div>}</span>
+                          </div>
+                        </div>
                       </div>
 
                       <div className='row'>
                         <div className='col-lg-6 '>
                           <div className='mb-2 pt-2 fs-16 fw-bolder'>
-                            <span>TIN Number</span>
+                            <span className='required'>TIN Number</span>
                           </div>
                           <div className='fv-row mb-2'>
                             <input
                               placeholder='Type here....'
                               className={clsx('form-control bg-white')}
-                              type='email'
-                              name='email'
+                              type='number'
+                              name='number'
                               autoComplete='off'
+                              value={tinNumber}
+                              onBlur={validateTinNumber}
+                              onChange={(e) => setTinNumber(e.target.value)}
                             />
+                            <div className='fv-plugins-message-container'>
+                              <div className='fv-help-block text-start'>
+                                <span role='alert'>
+                                  {tinNumberError && <div>{tinNumberError}</div>}
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div className='col-lg-6'>
                           <div className='mb-2 pt-2 fw-bolder fs-16'>
-                            <span>VAT Number</span>
+                            <span className='required'>VAT Number</span>
                           </div>
                           <div className='fv-row mb-2'>
                             <input
                               placeholder='Type here...'
                               className={clsx('form-control bg-white')}
-                              type='email'
-                              name='email'
+                              type='number'
+                              name='number'
                               autoComplete='off'
+                              value={vatNumber}
+                              onBlur={validateVatNumber}
+                              onChange={(e) => setVatNumber(e.target.value)}
                             />
+                            <div className='fv-plugins-message-container'>
+                              <div className='fv-help-block text-start'>
+                                <span role='alert'>
+                                  {vatNumberError && <div>{vatNumberError}</div>}
+                                </span>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -234,104 +403,16 @@ const AddCustomer: FC = () => {
                 </div>
               </div>
             </div>
-            <div className='row'>
-              <div className='col-lg-12 text-end'>
-                <button className='btn btn-primary mb-1 mt-8'>Add Customer</button>
-              </div>
+          </div>
+          <div className='row'>
+            <div className='col-lg-12 text-end'>
+              <button className='btn btn-primary mb-1 mt-8'>Add Customer</button>
             </div>
           </div>
         </div>
       </div>
+
       {/* {end } */}
-
-      {/* {Row 2 : begin } */}
-      {/* <div className='row'>
-        <div className='col-lg-8 col-xxl-9 pt-12'>
-          <div className='card bg-light rounded-2 ' style={{boxShadow: 'none'}}>
-            <div className='card-body '>
-              <div className=' me-2 mb-3'>
-                <span className='fw-bolder text-gray-800 fs-22'>Business details</span>
-              </div>
-              <div className='row'>
-                <div className='col-lg-6 '>
-                  <div className='mb-2 pt-2 fs-16 fw-bolder'>
-                    <span>Name</span>
-                  </div>
-                  <div className='fv-row mb-2'>
-                    <input
-                      placeholder='Type here....'
-                      className={clsx('form-control bg-white')}
-                      type='email'
-                      name='email'
-                      autoComplete='off'
-                    />
-                  </div>
-                </div>
-                <div className='col-lg-6'>
-                  <div className='mb-2 pt-2 fw-bolder fs-16'>
-                    <span>Email</span>
-                  </div>
-                  <div className='fv-row mb-2'>
-                    <Select
-                      options={optionsYear}
-                      styles={customStyles}
-                      defaultValue={defaultOption2}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className='row'>
-                <div className='col-lg-12 pt-5'>
-                  <div className='mb-2 fs-16 fw-bolder'>
-                    <span>Address</span>
-                  </div>
-                  <div className='fv-row mb-2'>
-                    <input
-                      placeholder='Type here....'
-                      className={clsx('form-control bg-white')}
-                      type='email'
-                      name='email'
-                      autoComplete='off'
-                    />
-                  </div>
-
-                  <div className='row'>
-                    <div className='col-lg-6 '>
-                      <div className='mb-2 pt-2 fs-16 fw-bolder'>
-                        <span>TIN Number</span>
-                      </div>
-                      <div className='fv-row mb-2'>
-                        <input
-                          placeholder='Type here....'
-                          className={clsx('form-control bg-white')}
-                          type='email'
-                          name='email'
-                          autoComplete='off'
-                        />
-                      </div>
-                    </div>
-                    <div className='col-lg-6'>
-                      <div className='mb-2 pt-2 fw-bolder fs-16'>
-                        <span>VAT Number</span>
-                      </div>
-                      <div className='fv-row mb-2'>
-                        <input
-                          placeholder='Type here...'
-                          className={clsx('form-control bg-white')}
-                          type='email'
-                          name='email'
-                          autoComplete='off'
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-      {/* {Row 2 : end } */}
     </>
   )
 }
