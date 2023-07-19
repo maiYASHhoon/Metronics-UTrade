@@ -4,6 +4,7 @@ import React, {useState} from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
 import {getLayoutFromLocalStorage, ILayout, LayoutSetup} from '../../../_metronic/layout/core'
 import Select from 'react-select'
+import {useNavigate} from 'react-router-dom'
 
 const BuilderPage: React.FC = () => {
   const [tab, setTab] = useState('Sidebar')
@@ -67,6 +68,9 @@ const BuilderPage: React.FC = () => {
     }),
   }
 
+  const navigate = useNavigate()
+  const handleClick = () => navigate('/add-customer')
+
   return (
     <>
       <div className='row align-items-center notification-c'>
@@ -86,7 +90,9 @@ const BuilderPage: React.FC = () => {
             <Select options={optionsDistrict} styles={customStyles} defaultValue={defaultOption} />
           </div>
           <div className='w-auto'>
-            <button className='btn btn-primary mb-1'>Add New Customer</button>
+            <button className='btn btn-primary mb-1' onClick={handleClick}>
+              Add New Customer
+            </button>
           </div>
         </div>
       </div>

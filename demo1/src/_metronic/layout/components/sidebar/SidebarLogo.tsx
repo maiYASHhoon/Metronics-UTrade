@@ -17,7 +17,7 @@ const SidebarLogo = () => {
   const toggleState = appSidebarDefaultMinimizeDesktopEnabled ? 'active' : ''
   const appSidebarDefaultMinimizeDefault = config.app?.sidebar?.default?.minimize?.desktop?.default
   return (
-    <div className='app-sidebar-logo px-6' id='kt_app_sidebar_logo'>
+    <div className='app-sidebar-logo px-6 bg-white' id='kt_app_sidebar_logo'>
       <Link to='/dashboard'>
         {config.layoutType === 'dark-sidebar' ? (
           <img
