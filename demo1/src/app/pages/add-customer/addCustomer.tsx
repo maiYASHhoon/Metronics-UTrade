@@ -93,7 +93,7 @@ const AddCustomer: FC = () => {
   const [tinNumberError, setTinNumberError] = useState('')
   const validateTinNumber = () => {
     if (tinNumber.trim() === '') {
-      setTinNumberError('Phone TIN is required')
+      setTinNumberError('TIN is required')
     } else if (tinNumber.trim().length < 12) {
       setTinNumberError('Should be 12 numbers')
     } else {
