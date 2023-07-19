@@ -2,6 +2,7 @@ import React, {FC, useEffect, useState} from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
 import Select from 'react-select'
 import clsx from 'clsx'
+import {useNavigate} from 'react-router-dom'
 
 const optionsYear = [
   {value: 'Business 1', label: 'Business Really'},
@@ -141,6 +142,9 @@ const AddCustomer: FC = () => {
       setAddressError('')
     }
   }
+
+  const navigate = useNavigate()
+  const handleClick = () => navigate('/customer-porfile')
 
   return (
     <>
@@ -406,7 +410,9 @@ const AddCustomer: FC = () => {
           </div>
           <div className='row'>
             <div className='col-lg-12 text-end'>
-              <button className='btn btn-primary mb-1 mt-8'>Add Customer</button>
+              <button className='btn btn-primary mb-1 mt-8' onClick={handleClick}>
+                Add Customer
+              </button>
             </div>
           </div>
         </div>

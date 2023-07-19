@@ -9,6 +9,7 @@ import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
 import {ViewProduct} from '../pages/view-products/ViewProduct'
 import {AddCustomer} from '../pages/add-customer/addCustomer'
+import {CustomerProfile} from '../pages/customer-profile/CustomerProfile'
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
@@ -29,6 +30,7 @@ const PrivateRoutes = () => {
         <Route path='menu-test' element={<MenuTestPage />} />
         <Route path='view-product' element={<ViewProduct />} />
         <Route path='add-customer' element={<AddCustomer />} />
+        <Route path='customer-porfile' element={<CustomerProfile />} />
         {/* Lazy Modules */}
         <Route
           path='crafted/pages/profile/*'
