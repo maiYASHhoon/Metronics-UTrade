@@ -38,6 +38,70 @@ const CustomerProfile: FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Profile */}
+      <div className='card'>
+        <div className='card-body table-out mb-8'>
+          <div className='row'>
+            <div className='col-lg-2'>
+              <img className='upload-logo' src={toAbsoluteUrl('/media/customers/1.png')} alt='' />
+            </div>
+            <div className='col-lg-10'>
+              <div className='row mb-5'>
+                <div className='col-lg-5'>
+                  <h2>Maisha Supermarket</h2>
+                  <div className='row'>
+                    <div className='col-lg-5'>
+                      <span>+255 657 727 427</span>
+                    </div>
+                    <div className='col-lg-7'>
+                      <span>patrick.richards@mail.com</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* Card */}
+              <div className='row'>
+                <div className='col-lg-auto mb-5'>
+                  <div className='card bg-light rounded-4 w-100 border' style={{boxShadow: 'none'}}>
+                    <div className='card-body p-5'>
+                      <h2 className='fs-22 fw-bold text-black mb-1'>24</h2>
+                      <span className='fs-16 fw-500'>Total orders</span>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-lg-auto mb-5'>
+                  <div className='card bg-light rounded-4 w-100 border' style={{boxShadow: 'none'}}>
+                    <div className='card-body p-5'>
+                      <h2 className='fs-22 fw-bold text-black mb-1'>Tsh 4,271,163</h2>
+                      <span className='fs-16 fw-500'>Total order value</span>
+                    </div>
+                  </div>
+                </div>
+                <div className='col-lg-auto mb-5'>
+                  <div className='card bg-light rounded-4 w-100 border' style={{boxShadow: 'none'}}>
+                    <div className='card-body p-5'>
+                      <h2 className='fs-22 fw-bold text-black mb-1'>NA</h2>
+                      <span className='fs-16 fw-500'>Assigned member</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+          {/* <div className="card-footer">
+            <div className="row">
+              <div className="col-lg-12">
+                <span>Dashboard</span>
+                <span>Business details</span>
+                <span>Orders</span>
+              </div>
+            </div>
+          </div> */}
+      </div>
+
       {/* Listwidget box */}
       <div className='row gy-5 gx-xl-8 mb-8'>
         <div className='col-12'>
