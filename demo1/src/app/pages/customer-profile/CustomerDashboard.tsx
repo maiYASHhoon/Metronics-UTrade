@@ -1,6 +1,6 @@
 import React, {FC} from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
-import {ListsWidget10} from '../../../_metronic/partials/widgets/lists/ListsWidget10'
+import { ListsWidget10 } from '../../../_metronic/partials/widgets/lists/ListsWidget10';
 import Select from 'react-select'
 
 const optionsYear = [
@@ -11,7 +11,7 @@ const optionsYear = [
 const customStyles = {
   control: (provided: any) => ({
     ...provided,
-    width: '100%',
+    width: '288px',
     height: '50px',
     borderRadius: '8px',
     border: 'solid 0.5px #e0e0df',
@@ -21,25 +21,13 @@ const customStyles = {
   }),
 }
 
-const CustomerProfile: FC = () => {
+const CustomerDashboard: FC = () => {
   const defaultOption = {value: '01/04/2023 - 07/04/2023', label: '01/04/2023 - 07/04/2023'}
+
   return (
-    <>
-      <div className='row align-items-center mb-5 pt-5'>
-        <div className='col-lg-6 pt-4 mb-3'>
-          <h1 className='fs-22 text-bold'>Customer profile</h1>
-        </div>
-        <div className='col-lg-6 d-flex justify-content-end align-items-center gap-2 gap-lg-3'>
-          <div className='w-235px'>
-            <button className='btn btn-light-primary mb-1 fw-bolder'>Edit Profile Details</button>
-          </div>
-          <div className='w-auto'>
-            <img alt='' src={toAbsoluteUrl('/media/icons/button.svg')} className='h-47px' />
-          </div>
-        </div>
-      </div>
-      {/* Listwidget box */}
-      <div className='row gy-5 gx-xl-8 mb-8'>
+    <> 
+   {/* Listwidget box */}
+   <div className='row gy-5 gx-xl-8 mb-8'>
         <div className='col-12'>
           <ListsWidget10 />
         </div>
@@ -387,138 +375,8 @@ const CustomerProfile: FC = () => {
           {/* end::Table container */}
         </div>
       </div>
-      {/* Basic Details */}
-      <div className='card table-out mb-7'>
-        <div className='card-header bg-light border-2 pt-2'>
-          <h3 className='card-title fw-bold text-dark'>Basic details</h3>
-        </div>
-        <div className='card-body'>
-          <div className='row'>
-            <div className='col-lg-6 pt-2 '>
-              <div className='row align-items-center'>
-                <div className='col-lg-4'>
-                  <span className='text-gray-800 fw-bold fs-6'>Name:</span>
-                </div>
-                <div className='col-lg-8'>
-                  <span className='text-gray-800 fw-bold fs-6'>Patrick Richards</span>
-                </div>
-              </div>
-            </div>
-            <div className='col-lg-6 pt-2 '>
-              <div className='row align-items-center'>
-                <div className='col-lg-4'>
-                  <span className='text-gray-800 fw-bold fs-6'>Business name:</span>
-                </div>
-                <div className='col-lg-8'>
-                  <span className='text-gray-800 fw-bold fs-6'>Maisha Supermarket</span>
-                </div>
-              </div>
-            </div>
-            <div className='col-lg-6 pt-2 '>
-              <div className='row align-items-center'>
-                <div className='col-lg-4'>
-                  <span className='text-gray-800 fw-bold fs-6'>Phone number:</span>
-                </div>
-                <div className='col-lg-8'>
-                  <span className='text-gray-800 fw-bold fs-6'>+255 657 727 427</span>
-                </div>
-              </div>
-            </div>
-            <div className='col-lg-6 pt-2 '>
-              <div className='row align-items-center'>
-                <div className='col-lg-4'>
-                  <span className='text-gray-800 fw-bold fs-6'>Email:</span>
-                </div>
-                <div className='col-lg-8'>
-                  <span className='text-gray-800 fw-bold fs-6'>patrick.richards@mail.com</span>
-                </div>
-              </div>
-            </div>
-            <div className='col-lg-6 pt-2 '>
-              <div className='row align-items-center'>
-                <div className='col-lg-4'>
-                  <span className='text-gray-800 fw-bold fs-6'>TIN number:</span>
-                </div>
-                <div className='col-lg-8'>
-                  <span className='text-gray-800 fw-bold fs-6'>772392332</span>
-                </div>
-              </div>
-            </div>
-            <div className='col-lg-6 pt-2 '>
-              <div className='row align-items-center'>
-                <div className='col-lg-4'>
-                  <span className='text-gray-800 fw-bold fs-6'>VAT number:</span>
-                </div>
-                <div className='col-lg-8'>
-                  <span className='text-gray-800 fw-bold fs-6'>200921876</span>
-                </div>
-              </div>
-            </div>
-            <div className='col-lg-6 pt-2 '>
-              <div className='row align-items-center'>
-                <div className='col-lg-4'>
-                  <span className='text-gray-800 fw-bold fs-6'>Business type:</span>
-                </div>
-                <div className='col-lg-8'>
-                  <span className=' badge badge-light-dark text-gray-800 fw-bold fs-6'>
-                    Manufacture
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className='col-lg-6 pt-2 '>
-              <div className='row align-items-center'>
-                <div className='col-lg-4'>
-                  <span className='text-gray-800 fw-bold fs-6'>Business address:</span>
-                </div>
-                <div className='col-lg-8'>
-                  <span className='text-gray-800 fw-bold fs-6'>
-                    Kibada St, Dar es Salaam, Tanzania
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/* Delivery Address */}
-
-      <div className='card table-out'>
-        <div className='card-header bg-light border-2 pt-2'>
-          <h3 className='card-title fw-bold text-dark'>Delivery address</h3>
-        </div>
-        <div className='card-body'>
-          <div className='row'>
-            <div className='col-lg-6 pt-2 '>
-              <div className='card' style={{boxShadow: 'none'}}>
-                <div className='d-flex align-items-center mb-8 customer'>
-                  <div className='flex-grow-1'>
-                    <span className='text-gray-800 fw-bold fs-6'>Barbara Mendoza</span>
-                    <span className='text-gray-800 fw-bold fs-6 d-block'>+255 657 727 427</span>
-                    <span className='text-gray-800 fw-bold fs-6 d-block'>
-                      Kibada St, Dar es Salaam, Tanzania
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className='col-lg-6 pt-2'>
-              <div className='card' style={{boxShadow: 'none'}}>
-                <div className='d-flex align-items-center mb-8 customer'>
-                  <div className='flex-grow-1'>
-                    <span className='text-gray-800 fw-bold fs-6'>Barbara Mendoza</span>
-                    <span className='text-gray-800 fw-bold fs-6 d-block'>+255 657 727 427</span>
-                    <span className='text-gray-800 fw-bold fs-6 d-block'>
-                      Kibada St, Dar es Salaam, Tanzania
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
-  )
-}
-export {CustomerProfile}
+    )
+  }
+  export {CustomerDashboard}
+  
