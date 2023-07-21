@@ -18,7 +18,7 @@ const SidebarMenuMain = () => {
       />
       <SidebarMenuItem
         to='/dashboard2'
-        icon='/media/icons/duotune/art/art002.svg'
+        icon='/media/icons/duotune/art/art009.svg'
         title="Dashboard 2"
         fontIcon='bi-app-indicator'
       />
@@ -28,12 +28,12 @@ const SidebarMenuMain = () => {
         title='Customer'
         fontIcon='bi-layers'
       />
-      {/* <SidebarMenuItem
-        to='/'
-        icon='/media/icons/duotune/general/gen019.svg'
-        title='My Team'
+      <SidebarMenuItem
+        to='/orders'
+        icon='/media/icons/duotune/general/gen012.svg'
+        title='Orders'
         fontIcon='bi-layers'
-      /> */}
+      />
       {/* <SidebarMenuItem
         to='/'
         icon='/media/icons/duotune/general/gen019.svg'
