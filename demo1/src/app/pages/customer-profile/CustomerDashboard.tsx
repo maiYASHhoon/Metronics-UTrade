@@ -26,8 +26,8 @@ const CustomerDashboard: FC = () => {
 
   return (
     <> 
-   {/* Listwidget box */}
-   <div className='row gy-5 gx-xl-8 mb-8'>
+      {/* Listwidget box */}
+      <div className='row gy-5 gx-xl-8 mb-8'>
         <div className='col-12'>
           <ListsWidget10 />
         </div>

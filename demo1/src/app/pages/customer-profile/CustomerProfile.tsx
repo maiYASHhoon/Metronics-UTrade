@@ -2,6 +2,7 @@ import React, {FC} from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
 import {ListsWidget10} from '../../../_metronic/partials/widgets/lists/ListsWidget10'
 import Select from 'react-select'
+import {Link} from 'react-router-dom'
 
 const optionsYear = [
   {value: 'July 2023', label: 'July 2023'},
@@ -52,10 +53,16 @@ const CustomerProfile: FC = () => {
                   <h2>Maisha Supermarket</h2>
                   <div className='row'>
                     <div className='col-lg-5'>
+                      <img alt='' src={toAbsoluteUrl('/media/icons/call.svg')} className='h-47px' />
                       <span>+255 657 727 427</span>
                     </div>
                     <div className='col-lg-7'>
-                      <span>patrick.richards@mail.com</span>
+                      <img
+                        alt=''
+                        src={toAbsoluteUrl('/media/icons/email.svg')}
+                        className='h-47px'
+                      />
+                      <span className='px-1'>patrick.richards@mail.com</span>
                     </div>
                   </div>
                 </div>
@@ -89,17 +96,31 @@ const CustomerProfile: FC = () => {
               </div>
             </div>
           </div>
-
-        </div>
-          {/* <div className="card-footer">
-            <div className="row">
-              <div className="col-lg-12">
-                <span>Dashboard</span>
-                <span>Business details</span>
-                <span>Orders</span>
+          {/* Card Footer */}
+          <div className='card-footer p-0 pt-3 ' style={{border: 'none'}}>
+            <div className='row'>
+              <div className='col-lg-12'>
+                <div className='row'>
+                  <div className='col-sm-auto'>
+                    <Link  to='/crafted/pages/profile/documents' className='link-dark'>
+                      <span className='fw-bold'>Dashboard</span>
+                    </Link>
+                  </div>
+                  <div className='col-sm-auto'>
+                    <Link to='/auth/forgot-password' className='link-dark'>
+                      <span className='fw-bold'>Business details</span>
+                    </Link>
+                  </div>
+                  <div className='col-sm-auto'>
+                    <Link to='/auth/forgot-password' className='link-dark'>
+                      <span className='fw-bold'>Orders</span>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
-          </div> */}
+          </div>
+        </div>
       </div>
 
       {/* Listwidget box */}
