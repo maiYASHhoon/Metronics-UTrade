@@ -17,6 +17,12 @@ const SidebarMenuMain = () => {
         fontIcon='bi-app-indicator'
       />
       <SidebarMenuItem
+        to='/dashboard2'
+        icon='/media/icons/duotune/art/art002.svg'
+        title="Dashboard 2"
+        fontIcon='bi-app-indicator'
+      />
+      <SidebarMenuItem
         to='/builder'
         icon='/media/icons/duotune/general/gen019.svg'
         title='Customer'
