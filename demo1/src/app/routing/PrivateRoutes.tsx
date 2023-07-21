@@ -11,6 +11,7 @@ import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
 import {ViewProduct} from '../pages/view-products/ViewProduct'
 import {AddCustomer} from '../pages/add-customer/addCustomer'
 import {CustomerProfile} from '../pages/customer-profile/CustomerProfile'
+import { OrderWrapper } from '../pages/orders/OrderWrapper'
 
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
@@ -33,6 +34,7 @@ const PrivateRoutes = () => {
         <Route path='view-product' element={<ViewProduct />} />
         <Route path='add-customer' element={<AddCustomer />} />
         <Route path='customer-porfile' element={<CustomerProfile />} />
+        <Route path='orders' element={<OrderWrapper />} />
         {/* Lazy Modules */}
         <Route
           path='crafted/pages/profile/*'
