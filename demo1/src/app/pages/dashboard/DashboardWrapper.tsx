@@ -10,7 +10,7 @@ import {
   ListsWidget4,
   ListsWidget6,
   TablesWidget5,
-  TablesWidget10,
+  TablesWidget10,   
 } from '../../../_metronic/partials/widgets'
 const optionsDistrict = [
   {value: 'Kigamboni district', label: 'Kigamboni district'},
