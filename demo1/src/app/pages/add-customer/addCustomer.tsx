@@ -87,6 +87,36 @@ const AddCustomer: FC = () => {
     console.log(event.target.name)
   }
 
+  const handleSubmit = async () => {
+    let temp: any = {...customerData}
+    let tempValidation: any = {...customerValidation}
+    if (temp.name === '') {
+      tempValidation.name = true
+    }
+    if (temp.email === '') {
+      tempValidation.email = true
+    }
+    if (temp.phoneNumber === '') {
+      tempValidation.phoneNumber = true
+    }
+    if (temp.businessName === '') {
+      tempValidation.businessName = true
+    }
+    if (temp.address === '') {
+      tempValidation.address = true
+    }
+    if (temp.tinNumber === '') {
+      tempValidation.tinNumber = true
+    }
+    if (temp.vatNumber === '') {
+      tempValidation.vatNumber = true
+    }
+
+    let allTemp = Object.values(temp).every((element) => element === false)
+    if (allTemp) {
+    }
+    setCustomerValidation(tempValidation)
+  }
   const handleClick = () => navigate('/customer-porfile')
 
   return (
@@ -97,7 +127,6 @@ const AddCustomer: FC = () => {
         </div>
       </div>
 
-      {/* {*****************************************************************************************} */}
       {/* { begin } */}
       <div className='row g-9'>
         <div className='col-lg-4 col-xxl-3'>
@@ -140,7 +169,6 @@ const AddCustomer: FC = () => {
             </div>
           </div>
         </div>
-        {/* {*****************************************************************************************} */}
         <div className='col-lg-8 col-xxl-9 '>
           <div className='row'>
             <div className='col-12'>
@@ -157,7 +185,10 @@ const AddCustomer: FC = () => {
                       <div className='fv-row mb-2'>
                         <input
                           placeholder='Type here....'
-                          className={clsx('form-control bg-white')}
+                          className={clsx(
+                            'form-control bg-white',
+                            customerValidation.name ? 'border-danger' : ''
+                          )}
                           type='name'
                           name='name'
                           autoComplete='off'
@@ -166,7 +197,9 @@ const AddCustomer: FC = () => {
                         />
                         <div className='fv-plugins-message-container'>
                           <div className='fv-help-block text-start'>
-                            {/* <span role='alert'>{nameError && <div>{nameError}</div>}</span> */}
+                            <span role='alert'>
+                              {customerValidation.name && <div>{'Please enter name'}</div>}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -178,7 +211,10 @@ const AddCustomer: FC = () => {
                       <div className='fv-row mb-2'>
                         <input
                           placeholder='Type here...'
-                          className={clsx('form-control bg-white')}
+                          className={clsx(
+                            'form-control bg-white',
+                            customerValidation.email ? 'border-danger' : ''
+                          )}
                           type='email'
                           name='email'
                           autoComplete='off'
@@ -187,7 +223,9 @@ const AddCustomer: FC = () => {
                         />
                         <div className='fv-plugins-message-container'>
                           <div className='fv-help-block text-start'>
-                            {/* <span role='alert'>{emailError && <div>{emailError}</div>}</span> */}
+                            <span role='alert'>
+                              {customerValidation.email && <div>{'Please enter email'}</div>}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -211,16 +249,19 @@ const AddCustomer: FC = () => {
                             autoComplete='off'
                             value={customerData.phoneNumber}
                             onChange={handleBasicDetailsChange}
-                            className={clsx('form-control bg-white ')}
+                            className={clsx(
+                              'form-control bg-white',
+                              customerValidation.phoneNumber ? 'border-danger' : ''
+                            )}
                           />
                         </div>
                       </div>
                       <div className='fv-plugins-message-container'>
                         <div className='fv-help-block text-start'>
                           <span role='alert'>
-                            {/* { phoneNumberError && (
-                              <div>{phoneNumberError}</div>
-                            )} */}
+                            {customerValidation.phoneNumber && (
+                              <div>{'Please enter phone number'}</div>
+                            )}
                           </span>
                         </div>
                       </div>
@@ -244,7 +285,10 @@ const AddCustomer: FC = () => {
                       <div className='fv-row mb-2'>
                         <input
                           placeholder='Type here....'
-                          className={clsx('form-control bg-white')}
+                          className={clsx(
+                            'form-control bg-white',
+                            customerValidation.businessName ? 'border-danger' : ''
+                          )}
                           type='text'
                           name='businessName'
                           autoComplete='off'
@@ -254,7 +298,9 @@ const AddCustomer: FC = () => {
                         <div className='fv-plugins-message-container'>
                           <div className='fv-help-block text-start'>
                             <span role='alert'>
-                              {/* {businessNameError && <div>{businessNameError}</div>} */}
+                              {customerValidation.businessName && (
+                                <div>{'Please enter business name'}</div>
+                              )}
                             </span>
                           </div>
                         </div>
@@ -277,7 +323,10 @@ const AddCustomer: FC = () => {
                       <div className='fv-row mb-2'>
                         <input
                           placeholder='Type here....'
-                          className={clsx('form-control bg-white')}
+                          className={clsx(
+                            'form-control bg-white',
+                            customerValidation.address ? 'border-danger' : ''
+                          )}
                           type='text-area'
                           name='address'
                           autoComplete='off'
@@ -286,7 +335,9 @@ const AddCustomer: FC = () => {
                         />{' '}
                         <div className='fv-plugins-message-container'>
                           <div className='fv-help-block text-start'>
-                            {/* <span role='alert'>{addressError && <div>{addressError}</div>}</span> */}
+                            <span role='alert'>
+                              {customerValidation.address && <div>{'Please enter address'}</div>}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -299,7 +350,10 @@ const AddCustomer: FC = () => {
                           <div className='fv-row mb-2'>
                             <input
                               placeholder='Type here....'
-                              className={clsx('form-control bg-white')}
+                              className={clsx(
+                                'form-control bg-white',
+                                customerValidation.tinNumber ? 'border-danger' : ''
+                              )}
                               type='number'
                               name='tinNumber'
                               autoComplete='off'
@@ -308,9 +362,11 @@ const AddCustomer: FC = () => {
                             />
                             <div className='fv-plugins-message-container'>
                               <div className='fv-help-block text-start'>
-                                {/* <span role='alert'>
-                                  {tinNumberError && <div>{tinNumberError}</div>}
-                                </span> */}
+                                <span role='alert'>
+                                  {customerValidation.tinNumber && (
+                                    <div>{'Please enter TIN Number'}</div>
+                                  )}
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -322,7 +378,10 @@ const AddCustomer: FC = () => {
                           <div className='fv-row mb-2'>
                             <input
                               placeholder='Type here...'
-                              className={clsx('form-control bg-white')}
+                              className={clsx(
+                                'form-control bg-white',
+                                customerValidation.vatNumber ? 'border-danger' : ''
+                              )}
                               type='number'
                               name='vatNumber'
                               autoComplete='off'
@@ -331,9 +390,11 @@ const AddCustomer: FC = () => {
                             />
                             <div className='fv-plugins-message-container'>
                               <div className='fv-help-block text-start'>
-                                {/* <span role='alert'>
-                                  {vatNumberError && <div>{vatNumberError}</div>}
-                                </span> */}
+                                <span role='alert'>
+                                  {customerValidation.vatNumber && (
+                                    <div>{'Please enter VAT Number'}</div>
+                                  )}
+                                </span>
                               </div>
                             </div>
                           </div>
@@ -347,7 +408,7 @@ const AddCustomer: FC = () => {
           </div>
           <div className='row'>
             <div className='col-lg-12 text-end'>
-              <button className='btn btn-primary mb-1 mt-8' onClick={handleClick}>
+              <button className='btn btn-primary mb-1 mt-8' onClick={handleSubmit}>
                 Add Customer
               </button>
             </div>
