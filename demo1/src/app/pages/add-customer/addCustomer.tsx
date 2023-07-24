@@ -1,8 +1,10 @@
-import React, {FC, useEffect, useState} from 'react'
+import React, {ChangeEvent, FC, useEffect, useState} from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
 import Select from 'react-select'
 import clsx from 'clsx'
 import {useNavigate} from 'react-router-dom'
+import {string} from 'yup'
+import {StringifyOptions} from 'querystring'
 
 const optionsYear = [
   {value: 'Business 1', label: 'Business Really'},
@@ -23,127 +25,68 @@ const customStyles = {
 
 //File Upload
 const AddCustomer: FC = () => {
+  const navigate = useNavigate()
+
   const [loading, setLoading] = useState(false)
   const [file, setFile] = useState<File | null>(null)
   const [imageUrl, setImageUrl] = useState('')
 
-  function handleUpload(event: any) {
+  const handleUpload = (event: any) => {
     const uploadedFile = event.target.files[0]
     setFile(uploadedFile)
     setImageUrl(uploadedFile ? URL.createObjectURL(uploadedFile) : '')
   }
+  {
+    /* Validation/State Management */
+  }
+  const [customerData, setCustomerData] = useState<{
+    name: string
+    email: string
+    phoneNumber: string
+    businessName: string
+    address: string
+    tinNumber: string
+    vatNumber: string
+  }>({
+    name: '',
+    email: '',
+    businessName: '',
+    phoneNumber: '',
+    address: '',
+    tinNumber: '',
+    vatNumber: '',
+  })
+  const [customerValidation, setCustomerValidation] = useState<{
+    name: boolean
+    email: boolean
+    phoneNumber: boolean
+    businessName: boolean
+    address: boolean
+    tinNumber: boolean
+    vatNumber: boolean
+  }>({
+    name: false,
+    email: false,
+    phoneNumber: false,
+    businessName: false,
+    address: false,
+    tinNumber: false,
+    vatNumber: false,
+  })
 
-  // Custom Validations
-
-  /*******************Name Validation****************************/
-
-  const [name, setName] = useState('')
-  const [nameError, setNameError] = useState('')
-  const validateName = () => {
-    if (name.trim() === '') {
-      setNameError('Name is required')
-    } else if (name.trim().length < 3) {
-      setNameError('Name should be at least 3 characters long')
-    } else {
-      setNameError('')
+  const handleBasicDetailsChange = (event: ChangeEvent<HTMLInputElement>) => {
+    let temp: any = {...customerData}
+    let tempValidation: any = {...customerValidation}
+    tempValidation[event.target.name] = false
+    if (event.target.value.trimStart() === '') {
+      tempValidation[event.target.name] = true
     }
-  }
-  /*******************BusinessName Validation****************************/
-
-  const [businessName, businessSetName] = useState('')
-  const [businessNameError, businessSetNameError] = useState('')
-  const validateBusinessName = () => {
-    if (name.trim() === '') {
-      businessSetNameError('Business Name is required')
-    } else if (name.trim().length < 3) {
-      businessSetNameError('Name should be at least 3 characters long')
-    } else {
-      businessSetNameError('')
-    }
+    temp[event.target.name] = event.target.value.trimStart()
+    setCustomerData(temp)
+    setCustomerValidation(tempValidation)
+    console.log(event.target.name)
   }
 
-  /*******************Number Validation****************************/
-
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [phoneNumberError, setPhoneNumberError] = useState('')
-  const [phoneNumberTouched, setPhoneNumberTouched] = useState(false)
-  const validatePhoneNumber = () => {
-    const phoneRegex = /^\d{10}$/
-
-    if (phoneNumber.trim() === '') {
-      setPhoneNumberError('Phone number is required')
-    } else if (!phoneRegex.test(phoneNumber)) {
-      setPhoneNumberError('Invalid phone number format')
-    } else {
-      setPhoneNumberError('')
-    }
-  }
-  const handlePhoneNumberChange = (e: {target: {value: React.SetStateAction<string>}}) => {
-    setPhoneNumber(e.target.value)
-  }
-
-  const handlePhoneNumberBlur = () => {
-    setPhoneNumberTouched(true)
-    validatePhoneNumber()
-  }
-
-  /******************* TIN Number Validation****************************/
-
-  const [tinNumber, setTinNumber] = useState('')
-  const [tinNumberError, setTinNumberError] = useState('')
-  const validateTinNumber = () => {
-    if (tinNumber.trim() === '') {
-      setTinNumberError('TIN is required')
-    } else if (tinNumber.trim().length < 12) {
-      setTinNumberError('Should be 12 numbers')
-    } else {
-      setTinNumberError('')
-    }
-  }
-
-  /******************* VAT Number Validation****************************/
-
-  const [vatNumber, setVatNumber] = useState('')
-  const [vatNumberError, setVatNumberError] = useState('')
-  const validateVatNumber = () => {
-    if (vatNumber.trim() === '') {
-      setVatNumberError('VAT number is required')
-    } else if (vatNumber.trim().length < 12) {
-      setVatNumberError('Should be 12 numbers')
-    } else {
-      setVatNumberError('')
-    }
-  }
-  /*******************Email Validation****************************/
-
-  const [email, setEmail] = useState('')
-  const [emailError, setEmailError] = useState('')
-  const validateEmail = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-    if (email.trim() === '') {
-      setEmailError('Email is required')
-    } else if (!emailRegex.test(email)) {
-      setEmailError('Invalid email format')
-    } else {
-      setEmailError('')
-    }
-  }
-
-  /*******************Address Validation****************************/
-
-  const [address, setAddress] = useState('')
-  const [addressError, setAddressError] = useState('')
-
-  const validateAddress = () => {
-    if (address.trim() === '') {
-      setAddressError('Address is required')
-    } else {
-      setAddressError('')
-    }
-  }
-
-  const navigate = useNavigate()
   const handleClick = () => navigate('/customer-porfile')
 
   return (
@@ -218,13 +161,12 @@ const AddCustomer: FC = () => {
                           type='name'
                           name='name'
                           autoComplete='off'
-                          value={name}
-                          onBlur={validateName}
-                          onChange={(e) => setName(e.target.value)}
+                          value={customerData.name}
+                          onChange={handleBasicDetailsChange}
                         />
                         <div className='fv-plugins-message-container'>
                           <div className='fv-help-block text-start'>
-                            <span role='alert'>{nameError && <div>{nameError}</div>}</span>
+                            {/* <span role='alert'>{nameError && <div>{nameError}</div>}</span> */}
                           </div>
                         </div>
                       </div>
@@ -240,13 +182,12 @@ const AddCustomer: FC = () => {
                           type='email'
                           name='email'
                           autoComplete='off'
-                          value={email}
-                          onBlur={validateEmail}
-                          onChange={(e) => setEmail(e.target.value)}
+                          value={customerData.email}
+                          onChange={handleBasicDetailsChange}
                         />
                         <div className='fv-plugins-message-container'>
                           <div className='fv-help-block text-start'>
-                            <span role='alert'>{emailError && <div>{emailError}</div>}</span>
+                            {/* <span role='alert'>{emailError && <div>{emailError}</div>}</span> */}
                           </div>
                         </div>
                       </div>
@@ -265,11 +206,11 @@ const AddCustomer: FC = () => {
                         <div className='d-flex flex-grow-1'>
                           <input
                             placeholder='phone number...'
-                            type='string'
+                            type='number'
+                            name='phoneNumber'
                             autoComplete='off'
-                            value={phoneNumber}
-                            onChange={handlePhoneNumberChange}
-                            onBlur={handlePhoneNumberBlur}
+                            value={customerData.phoneNumber}
+                            onChange={handleBasicDetailsChange}
                             className={clsx('form-control bg-white ')}
                           />
                         </div>
@@ -277,9 +218,9 @@ const AddCustomer: FC = () => {
                       <div className='fv-plugins-message-container'>
                         <div className='fv-help-block text-start'>
                           <span role='alert'>
-                            {phoneNumberTouched && phoneNumberError && (
+                            {/* { phoneNumberError && (
                               <div>{phoneNumberError}</div>
-                            )}
+                            )} */}
                           </span>
                         </div>
                       </div>
@@ -305,16 +246,15 @@ const AddCustomer: FC = () => {
                           placeholder='Type here....'
                           className={clsx('form-control bg-white')}
                           type='text'
-                          name='name'
+                          name='businessName'
                           autoComplete='off'
-                          value={businessName}
-                          onBlur={validateBusinessName}
-                          onChange={(e) => businessSetName(e.target.value)}
+                          value={customerData.businessName}
+                          onChange={handleBasicDetailsChange}
                         />
                         <div className='fv-plugins-message-container'>
                           <div className='fv-help-block text-start'>
                             <span role='alert'>
-                              {businessNameError && <div>{businessNameError}</div>}
+                              {/* {businessNameError && <div>{businessNameError}</div>} */}
                             </span>
                           </div>
                         </div>
@@ -338,16 +278,15 @@ const AddCustomer: FC = () => {
                         <input
                           placeholder='Type here....'
                           className={clsx('form-control bg-white')}
-                          type='text'
+                          type='text-area'
                           name='address'
                           autoComplete='off'
-                          value={address}
-                          onBlur={validateAddress}
-                          onChange={(e) => setAddress(e.target.value)}
+                          value={customerData.address}
+                          onChange={handleBasicDetailsChange}
                         />{' '}
                         <div className='fv-plugins-message-container'>
                           <div className='fv-help-block text-start'>
-                            <span role='alert'>{addressError && <div>{addressError}</div>}</span>
+                            {/* <span role='alert'>{addressError && <div>{addressError}</div>}</span> */}
                           </div>
                         </div>
                       </div>
@@ -362,17 +301,16 @@ const AddCustomer: FC = () => {
                               placeholder='Type here....'
                               className={clsx('form-control bg-white')}
                               type='number'
-                              name='number'
+                              name='tinNumber'
                               autoComplete='off'
-                              value={tinNumber}
-                              onBlur={validateTinNumber}
-                              onChange={(e) => setTinNumber(e.target.value)}
+                              value={customerData.tinNumber}
+                              onChange={handleBasicDetailsChange}
                             />
                             <div className='fv-plugins-message-container'>
                               <div className='fv-help-block text-start'>
-                                <span role='alert'>
+                                {/* <span role='alert'>
                                   {tinNumberError && <div>{tinNumberError}</div>}
-                                </span>
+                                </span> */}
                               </div>
                             </div>
                           </div>
@@ -386,17 +324,16 @@ const AddCustomer: FC = () => {
                               placeholder='Type here...'
                               className={clsx('form-control bg-white')}
                               type='number'
-                              name='number'
+                              name='vatNumber'
                               autoComplete='off'
-                              value={vatNumber}
-                              onBlur={validateVatNumber}
-                              onChange={(e) => setVatNumber(e.target.value)}
+                              value={customerData.vatNumber}
+                              onChange={handleBasicDetailsChange}
                             />
                             <div className='fv-plugins-message-container'>
                               <div className='fv-help-block text-start'>
-                                <span role='alert'>
+                                {/* <span role='alert'>
                                   {vatNumberError && <div>{vatNumberError}</div>}
-                                </span>
+                                </span> */}
                               </div>
                             </div>
                           </div>
