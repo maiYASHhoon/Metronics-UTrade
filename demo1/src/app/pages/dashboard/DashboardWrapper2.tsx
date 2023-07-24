@@ -57,17 +57,17 @@ const DashboardPage2: FC = () => (
             <div className='card-body p-5'>
               <Nav variant='pills'>
                 <Nav.Item>
-                  <Nav.Link eventKey='assigned' className='fw-bold fs-16'>
+                  <Nav.Link eventKey='1' className='fw-bold fs-16'>
                     Assigned Customers(25)
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey='totalOrders' className='fw-bold fs-16'>
+                  <Nav.Link eventKey='2' className='fw-bold fs-16'>
                     Total orders
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item>
-                  <Nav.Link eventKey='onboarded' className='fw-bold fs-16'>
+                  <Nav.Link eventKey='3' className='fw-bold fs-16'>
                     Onboarded Customers
                   </Nav.Link>
                 </Nav.Item>
@@ -78,7 +78,7 @@ const DashboardPage2: FC = () => (
       </div>
       <Tab.Content>
         {/* Assigned Customers */}
-        <Tab.Pane eventKey='assigned'>
+        <Tab.Pane eventKey='1'>
           {
             <div className='card py-4'>
               <div className='card-body py-3  table-out rounded'>
@@ -472,7 +472,7 @@ const DashboardPage2: FC = () => (
             </div>
           }
         </Tab.Pane>
-        <Tab.Pane eventKey='totalOrders'>
+        <Tab.Pane eventKey='2'>
           {/* Total Orders */}
           {
             <div className='card py-4 '>
@@ -930,7 +930,7 @@ const DashboardPage2: FC = () => (
             </div>
           }
         </Tab.Pane>
-        <Tab.Pane eventKey='onboarded'>
+        <Tab.Pane eventKey='3'>
           {/* Total Orders */}
           {
             <div className='card py-4'>
