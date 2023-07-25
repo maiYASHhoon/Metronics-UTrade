@@ -1,18 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {FC} from 'react'
-import {useState} from 'react'
 import {useIntl} from 'react-intl'
 import {toAbsoluteUrl} from '../../../_metronic/helpers'
 import Select from 'react-select'
 import {Tab} from 'react-bootstrap'
-
-import {PageTitle} from '../../../_metronic/layout/core'
-import {
-  ListsWidget3,
-  ListsWidget4,
-  TablesWidget5,
-  TablesWidget10,
-} from '../../../_metronic/partials/widgets'
 import {ListsWidget11} from '../../../_metronic/partials/widgets/lists/ListsWidget11'
 import {Nav} from 'react-bootstrap'
 const optionsDistrict = [
@@ -39,7 +30,6 @@ const customStyles = {
 }
 const defaultOption = {value: 'Kigamboni district', label: 'Kigamboni district'}
 const defaultOption2 = {value: 'July 2023', label: 'July 2023'}
-
 const DashboardPage2: FC = () => (
   <>
     {/* begin::Row 4 boxes */}
@@ -48,7 +38,6 @@ const DashboardPage2: FC = () => (
         <ListsWidget11 />
       </div>
     </div>
-
     {/* end::Row */}
     <Tab.Container>
       <div className='row gy-5 gx-xl-8 mb-2'>
@@ -114,7 +103,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -147,7 +135,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -180,7 +167,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -213,7 +199,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -246,7 +231,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -279,7 +263,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -312,7 +295,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -345,7 +327,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -378,7 +359,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -411,7 +391,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -437,26 +416,22 @@ const DashboardPage2: FC = () => (
               </div>
               <div className='d-flex flex-stack flex-wrap pt-10'>
                 <div className='fs-6 fw-bold text-gray-700'>Showing 1 to 10 of 50 entries</div>
-
                 <ul className='pagination'>
                   <li className='page-item previous'>
                     <a href='#' className='page-link'>
                       <i className='previous'></i>
                     </a>
                   </li>
-
                   <li className='page-item active'>
                     <a href='#' className='page-link'>
                       1
                     </a>
                   </li>
-
                   <li className='page-item'>
                     <a href='#' className='page-link'>
                       2
                     </a>
                   </li>
-
                   <li className='page-item'>
                     <a href='#' className='page-link'>
                       3
@@ -967,7 +942,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -1000,7 +974,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -1033,7 +1006,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -1066,7 +1038,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -1099,7 +1070,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -1132,7 +1102,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -1165,7 +1134,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -1198,7 +1166,6 @@ const DashboardPage2: FC = () => (
                             </div>
                           </div>
                         </td>
-
                         <td className='text-end'>
                           <div className='d-flex flex-column w-100 me-2'>
                             <div className='d-flex flex-stack mb-2'>
@@ -1224,26 +1191,22 @@ const DashboardPage2: FC = () => (
               </div>
               <div className='d-flex flex-stack flex-wrap pt-10'>
                 <div className='fs-6 fw-bold text-gray-700'>Showing 1 to 10 of 50 entries</div>
-
                 <ul className='pagination'>
                   <li className='page-item previous'>
                     <a href='#' className='page-link'>
                       <i className='previous'></i>
                     </a>
                   </li>
-
                   <li className='page-item active'>
                     <a href='#' className='page-link'>
                       1
                     </a>
                   </li>
-
                   <li className='page-item'>
                     <a href='#' className='page-link'>
                       2
                     </a>
                   </li>
-
                   <li className='page-item'>
                     <a href='#' className='page-link'>
                       3
@@ -1263,7 +1226,6 @@ const DashboardPage2: FC = () => (
     </Tab.Container>
   </>
 )
-
 const DashboardWrapper2: FC = () => {
   const intl = useIntl()
   return (
@@ -1278,10 +1240,8 @@ const DashboardWrapper2: FC = () => {
           </div>
         </div>
       </div>
-
       <DashboardPage2 />
     </>
   )
 }
-
 export {DashboardWrapper2}

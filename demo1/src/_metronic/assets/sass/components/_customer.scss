@@ -1,53 +1,41 @@
 .table-out {
   border: solid 0.5px #e0e0df;
 }
-
 .customer {
   padding: 18px 20px;
   border: solid 0.5px #e0e0df;
   border-radius: 8px;
 }
-
 .fs-22 {
   font-size: 22px !important;
 }
-
 .fs-16 {
   font-size: 16px !important;
 }
-
 .fs-14 {
   font-size: 14px !important;
 }
-
 .fs-13 {
   font-size: 13px !important;
 }
-
 .fs-12 {
   font-size: 12px !important;
 }
-
 .fs-15 {
   font-size: 15px !important;
 }
-
 .fs-17 {
   font-size: 17px !important;
 }
-
 .fs-18 {
   font-size: 18px !important;
 }
-
 .fs-19 {
   font-size: 19px !important;
 }
-
 .fs-20 {
   font-size: 20px !important;
 }
-
 .badge-cu {
   width: 148px;
   height: 40px;
@@ -55,7 +43,6 @@
   border-radius: 20px;
   background-color: #f9f9f9;
 }
-
 .search {
   width: 317px;
   height: 60px;
@@ -69,7 +56,6 @@
   font-size: 16px;
   background-color: #fff4d9;
 }
-
 .select-customer {
   max-width: 176px;
   max-height: 45px;
@@ -80,10 +66,17 @@
   margin: auto;
   object-fit: contain;
 }
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
-
   margin: 0;
+}
+.customStylesSelect {
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  border: solid 0.5px #e0e0df;
+  background-color: white;
+  font-size: 13px;
+  font-weight: bold;
 }
