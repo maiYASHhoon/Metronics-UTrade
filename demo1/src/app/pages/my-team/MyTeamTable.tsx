@@ -2,7 +2,7 @@ import {FC, useState} from 'react'
 import {KTSVG} from '../../../_metronic/helpers'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import {IMAGES, MyTeam} from '../../../utils/dummyJSON'
+import { MyTeam } from '../../../utils/dummyJSON';
 const MyTeamTable: FC = () => {
   const [startDate, setStartDate] = useState<Date | null>(new Date())
   return (
@@ -74,11 +74,7 @@ const MyTeamTable: FC = () => {
                         </div>
                       </td>
                       <td>
-                        <span
-                          className=' fs-7 fw-bold'
-                        >
-                          {team.customer}
-                        </span>
+                        <span className=' fs-7 fw-bold'>{team.customer}</span>
                       </td>
                       <td className='text-end'>
                         <div className='d-flex flex-column w-100 me-2'>
@@ -102,6 +98,7 @@ const MyTeamTable: FC = () => {
                         </div>
                       </td>
                     </tr>
+                    <div className='line'></div>
                   </tbody>
                 </>
               ))}
