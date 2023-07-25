@@ -1,5 +1,4 @@
 import {SidebarMenuMain} from './SidebarMenuMain'
-
 const SidebarMenu = () => {
   return (
     <div className='app-sidebar-menu overflow-hidden flex-column-fluid'>
@@ -26,5 +25,4 @@ const SidebarMenu = () => {
     </div>
   )
 }
-
 export {SidebarMenu}

@@ -11,8 +11,8 @@ import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
 import {ViewProduct} from '../pages/view-products/ViewProduct'
 import {AddCustomer} from '../pages/add-customer/addCustomer'
 import {CustomerProfile} from '../pages/customer-profile/CustomerProfile'
-import { OrderWrapper } from '../pages/orders/OrderWrapper'
-
+import {OrderWrapper} from '../pages/orders/OrderWrapper'
+import {MyTeam} from '../pages/my-team/MyTeam'
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
   const WizardsPage = lazy(() => import('../modules/wizards/WizardsPage'))
@@ -20,7 +20,6 @@ const PrivateRoutes = () => {
   const WidgetsPage = lazy(() => import('../modules/widgets/WidgetsPage'))
   const ChatPage = lazy(() => import('../modules/apps/chat/ChatPage'))
   const UsersPage = lazy(() => import('../modules/apps/user-management/UsersPage'))
-
   return (
     <Routes>
       <Route element={<MasterLayout />}>
@@ -35,6 +34,7 @@ const PrivateRoutes = () => {
         <Route path='add-customer' element={<AddCustomer />} />
         <Route path='customer-porfile' element={<CustomerProfile />} />
         <Route path='orders' element={<OrderWrapper />} />
+        <Route path='my-team' element={<MyTeam />} />
         {/* Lazy Modules */}
         <Route
           path='crafted/pages/profile/*'
@@ -90,7 +90,6 @@ const PrivateRoutes = () => {
     </Routes>
   )
 }
-
 const SuspensedView: FC<WithChildren> = ({children}) => {
   const baseColor = getCSSVariableValue('--bs-primary')
   TopBarProgress.config({
@@ -102,5 +101,4 @@ const SuspensedView: FC<WithChildren> = ({children}) => {
   })
   return <Suspense fallback={<TopBarProgress />}>{children}</Suspense>
 }
-
 export {PrivateRoutes}

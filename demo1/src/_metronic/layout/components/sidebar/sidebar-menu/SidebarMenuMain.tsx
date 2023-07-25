@@ -1,8 +1,4 @@
-/* eslint-disable react/jsx-no-target-blank */
-import React from 'react'
-import {useIntl} from 'react-intl'
-import {KTSVG} from '../../../../helpers'
-import {SidebarMenuItemWithSub} from './SidebarMenuItemWithSub'
+import { useIntl } from 'react-intl';
 import {SidebarMenuItem} from './SidebarMenuItem'
 
 const SidebarMenuMain = () => {
@@ -12,7 +8,7 @@ const SidebarMenuMain = () => {
     <>
       <SidebarMenuItem
         to='/dashboard'
-        icon='/media/icons/duotune/art/art002.svg'
+        icon='/media/icons/duotune/general/gen001.svg'
         title={intl.formatMessage({id: 'MENU.DASHBOARD'})}
         fontIcon='bi-app-indicator'
       />
@@ -29,8 +25,14 @@ const SidebarMenuMain = () => {
         fontIcon='bi-layers'
       />
       <SidebarMenuItem
+        to='/my-team'
+        icon='/media/icons/duotune/general/gen008.svg'
+        title='My Team'
+        fontIcon='bi-layers'
+      />
+      <SidebarMenuItem
         to='/orders'
-        icon='/media/icons/duotune/general/gen012.svg'
+        icon='/media/icons/duotune/general/gen004.svg'
         title='Orders'
         fontIcon='bi-layers'
       />

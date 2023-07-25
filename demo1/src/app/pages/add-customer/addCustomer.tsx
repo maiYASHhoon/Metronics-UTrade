@@ -1,11 +1,8 @@
-import React, {ChangeEvent, FC, useEffect, useState} from 'react'
-import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
+import {ChangeEvent, FC, useState} from 'react'
+import {toAbsoluteUrl} from '../../../_metronic/helpers'
 import Select from 'react-select'
 import clsx from 'clsx'
 import {useNavigate} from 'react-router-dom'
-import {string} from 'yup'
-import {StringifyOptions} from 'querystring'
-
 const optionsYear = [
   {value: 'Business 1', label: 'Business Really'},
   {value: 'Business 2', label: 'Business Really'},
@@ -22,15 +19,12 @@ const customStyles = {
     fontSize: '15px',
   }),
 }
-
 //File Upload
 const AddCustomer: FC = () => {
   const navigate = useNavigate()
-
   const [loading, setLoading] = useState(false)
   const [file, setFile] = useState<File | null>(null)
   const [imageUrl, setImageUrl] = useState('')
-
   const handleUpload = (event: any) => {
     const uploadedFile = event.target.files[0]
     setFile(uploadedFile)
@@ -73,7 +67,6 @@ const AddCustomer: FC = () => {
     tinNumber: false,
     vatNumber: false,
   })
-
   const handleBasicDetailsChange = (event: ChangeEvent<HTMLInputElement>) => {
     let temp: any = {...customerData}
     let tempValidation: any = {...customerValidation}
@@ -86,7 +79,6 @@ const AddCustomer: FC = () => {
     setCustomerValidation(tempValidation)
     console.log(event.target.name)
   }
-
   const handleSubmit = async () => {
     let temp: any = {...customerData}
     let tempValidation: any = {...customerValidation}
@@ -111,14 +103,12 @@ const AddCustomer: FC = () => {
     if (temp.vatNumber === '') {
       tempValidation.vatNumber = true
     }
-
     let allTemp = Object.values(temp).every((element) => element === false)
     if (allTemp) {
     }
     setCustomerValidation(tempValidation)
   }
   const handleClick = () => navigate('/customer-porfile')
-
   return (
     <>
       <div className='row align-items-center mb-5 pt-5'>
@@ -126,7 +116,6 @@ const AddCustomer: FC = () => {
           <h1 className='fs-22 text-bold'>Add new customer</h1>
         </div>
       </div>
-
       {/* { begin } */}
       <div className='row g-9'>
         <div className='col-lg-4 col-xxl-3'>
@@ -236,7 +225,6 @@ const AddCustomer: FC = () => {
                       <div className='mb-2 fs-16 fw-bold'>
                         <span className='required'>Phone number</span>
                       </div>
-
                       <div className='input-group'>
                         <div className='border-right-0 bg-white fs-16 fw-600 text-black px-6 form is-invalid input-group-text'>
                           +91
@@ -341,7 +329,6 @@ const AddCustomer: FC = () => {
                           </div>
                         </div>
                       </div>
-
                       <div className='row'>
                         <div className='col-lg-6 '>
                           <div className='mb-2 pt-2 fs-16 fw-bolder'>
@@ -415,10 +402,8 @@ const AddCustomer: FC = () => {
           </div>
         </div>
       </div>
-
       {/* {end } */}
     </>
   )
 }
-
 export {AddCustomer}
