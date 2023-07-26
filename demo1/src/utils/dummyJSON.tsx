@@ -14,6 +14,11 @@ export const IMAGES = {
   ZamzamStationerySupermarket: require('../_metronic/assets/brand/zamzam.png'),
   NilePerchFisheriesLtd: require('../_metronic/assets/brand/nile_perch.png'),
   OmrosFoods: require('../_metronic/assets/brand/omros_foods.png'),
+  NutroWafer: require('../_metronic/assets/food/chochlate.png'),
+  LatoMilk: require('../_metronic/assets/food/milk.png'),
+  RollGum: require('../_metronic/assets/food/pop.png'),
+  AmazonMonstaPops: require('../_metronic/assets/food/strawberry.png'),
+  FreedomPen: require('../_metronic/assets/food/pen.png'),
 }
 export const MyTeam = [
   {
@@ -197,3 +202,54 @@ export const BrandAndTotalSales = [
     paymentsDue: '47,051',
   },
 ]
+export const ProductDetails = {
+  records: [
+    {
+      productImage: IMAGES.NutroWafer,
+      productDescription: 'Nutro Wafer Biscuits (Chocolate, 75g)',
+      productCompany: 'Wadsworth Distributors Limited',
+      unitPrice: 'Tsh 53,000',
+      quantityType: '10 X Cartons',
+      totalAmount: 'Tsh 1,007,000',
+    },
+    {
+      productImage: IMAGES.RollGum,
+      productDescription: 'Amazon Roll Gum',
+      productCompany: 'Super Meals Limited',
+      unitPrice: 'Tsh 12,000',
+      quantityType: '25 X Cartons',
+      totalAmount: 'Tsh 300,000',
+    },
+    {
+      productImage: IMAGES.AmazonMonstaPops,
+      productDescription: 'Amazon Monsta Pops (Strawberry)',
+      productCompany: 'MacLeans BeneCIBO Limited',
+      unitPrice: 'Tsh 9,500',
+      quantityType: '15 X Dozens',
+      totalAmount: 'Tsh 142,500',
+    },
+    {
+      productImage: IMAGES.FreedomPen,
+      productDescription: 'Freedom Ball Pen',
+      productCompany: 'Afribon',
+      unitPrice: 'TSh 1,150',
+      quantityType: '100 X Pieces',
+      totalAmount: 'TSh 115,000',
+    },
+  ],
+  basicDetails: {
+    customerName: 'Patrick Richards',
+    orderId: '#00982',
+    orderPlaced: '25/03/23 - 21:30',
+    paymentMethod: 'Tigo pesa',
+  },
+  deliveryDetails: {
+    shopName: 'Maisha Supermarket',
+    phoneNumber: '+255 657 727 427',
+    deliveryAddress: 'Kibada St, Dar es Salaam, Tanzania',
+    city: 'Kigamboni, Dar es Salaam',
+  },
+  subTotal: 'Tsh 2,294,500',
+  tax: 'Tsh 45,890',
+  grandTotal: 'Tsh 2,340,390',
+}

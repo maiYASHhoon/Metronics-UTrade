@@ -13,6 +13,7 @@ import {AddCustomer} from '../pages/add-customer/addCustomer'
 import {CustomerProfile} from '../pages/customer-profile/CustomerProfile'
 import {OrderWrapper} from '../pages/orders/OrderWrapper'
 import {MyTeam} from '../pages/my-team/MyTeam'
+import {OrderDetails} from '../pages/orders/OrderDetails'
 const PrivateRoutes = () => {
   const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
   const WizardsPage = lazy(() => import('../modules/wizards/WizardsPage'))
@@ -35,6 +36,7 @@ const PrivateRoutes = () => {
         <Route path='customer-porfile' element={<CustomerProfile />} />
         <Route path='orders' element={<OrderWrapper />} />
         <Route path='my-team' element={<MyTeam />} />
+        <Route path='order-details' element={<OrderDetails />} />
         {/* Lazy Modules */}
         <Route
           path='crafted/pages/profile/*'

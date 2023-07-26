@@ -32,7 +32,7 @@ const CustomerProfile: FC = () => {
         </div>
         <div className='col-lg-6 d-flex justify-content-end align-items-center gap-2 gap-lg-3'>
           <div className='w-235px'>
-            <button className='btn btn-light-primary mb-1 fw-bolder'>Edit Profile Details</button>
+            <button className='btn btn-primary mb-1 fw-bolder'>Edit Profile Details</button>
           </div>
           <div className='w-auto'>
             <img alt='' src={toAbsoluteUrl('/media/icons/button.svg')} className='h-47px' />

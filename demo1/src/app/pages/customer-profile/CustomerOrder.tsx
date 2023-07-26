@@ -1,29 +1,31 @@
-import React, {FC} from 'react'
-import {KTSVG, toAbsoluteUrl} from '../../../_metronic/helpers'
+import {FC} from 'react'
+import {KTSVG} from '../../../_metronic/helpers'
 import Select from 'react-select'
-
+import {BrandAndTotalSales} from '../../../utils/dummyJSON'
+import {useNavigate} from 'react-router-dom'
 const optionsYear = [
-    {value: 'July 2023', label: 'July 2023'},
-    {value: 'June 2023', label: 'June 2023'},
-    {value: 'May 2023', label: 'May 2023'},
-  ]
-  const customStyles = {
-    control: (provided: any) => ({
-      ...provided,
-      width: '100%',
-      height: '50px',
-      borderRadius: '8px',
-      border: 'solid 0.5px #e0e0df',
-      backgroundColor: 'white',
-      fontSize: '15px',
-      fontWeight: 'bold',
-    }),
-  }
-  
+  {value: 'July 2023', label: 'July 2023'},
+  {value: 'June 2023', label: 'June 2023'},
+  {value: 'May 2023', label: 'May 2023'},
+]
+const customStyles = {
+  control: (provided: any) => ({
+    ...provided,
+    width: '100%',
+    height: '50px',
+    borderRadius: '8px',
+    border: 'solid 0.5px #e0e0df',
+    backgroundColor: 'white',
+    fontSize: '15px',
+    fontWeight: 'bold',
+  }),
+}
 const CustomerOrders: FC = () => {
+  const navigate = useNavigate()
+  const handleClick = () => navigate('/order-details')
   return (
     <>
-    {/* Orders */}
+      {/* Orders */}
       <div className='bg-light mb-3 border-2 rounded mb-8 pt-2'>
         <div className='row align-items-center'>
           <div className='col-lg-6 my-6'>
@@ -75,434 +77,58 @@ const CustomerOrders: FC = () => {
               </thead>
               {/* end::Table head */}
               {/* begin::Table body */}
-              <tbody>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <div className='d-flex justify-content-start flex-column'>
-                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
-                          25/03/23 - 21:30
-                        </a>
-                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
-                          #00982
+              {BrandAndTotalSales.map((order, index) => (
+                <>
+                  <tbody>
+                    <tr key={index}>
+                      <td>
+                        <div className='d-flex align-items-center'>
+                          <div className='d-flex justify-content-start flex-column'>
+                            <a className='text-dark fw-bold text-hover-primary fs-15'>
+                              {order.dateTime}
+                            </a>
+                            <span className='text-muted fw-semibold text-muted d-block fs-7'>
+                              {order.code}
+                            </span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <span
+                          className='badge badge-light-dark fs-15 '
+                          style={{backgroundColor: '#f9f9f9'}}
+                        >
+                          {order.orderBy}
                         </span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span
-                      className='badge badge-light-dark fs-15 '
-                      style={{backgroundColor: '#f9f9f9'}}
-                    >
-                      Patrick Richards
-                    </span>
-                  </td>
-                  <td className='text-end'>
-                    <div className='d-flex flex-column w-100 me-2'>
-                      <div className='d-flex flex-stack mb-2'>
-                        <span className='text-center me-2 fs-7 fw-bold'>23 itmes</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content flex-shrink-0'>
-                      <div className='d-flex justify-content flex-shrink-0'>
-                        <span className='text-center fw-bold '>Tsh 1,000,000</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content-end flex-shrink-0'>
-                      <div className='d-flex justify-content-end flex-shrink-0'>
-                        <button className='btn btn-primary '>View details</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <div className='d-flex justify-content-start flex-column'>
-                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
-                          25/03/23 - 15:10
-                        </a>
-                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
-                          #00981
-                        </span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span
-                      className='badge badge-light-dark fs-15'
-                      style={{backgroundColor: '#f9f9f9'}}
-                    >
-                      Customer
-                    </span>
-                  </td>
-                  <td className='text-end'>
-                    <div className='d-flex flex-column w-100 me-2'>
-                      <div className='d-flex flex-stack mb-2'>
-                        <span className='text-center me-2 fs-7 fw-bold'>12 items</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content flex-shrink-0'>
-                      <div className='d-flex justify-content flex-shrink-0'>
-                        <span className='text-center fw-bold '>TSh 311,500</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content-end flex-shrink-0'>
-                      <div className='d-flex justify-content-end flex-shrink-0'>
-                        <button className='btn btn-primary'>View details</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <div className='d-flex justify-content-start flex-column'>
-                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
-                          25/03/23 - 10:42
-                        </a>
-                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
-                          #00980
-                        </span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span
-                      className='badge badge-light-dark fs-15 fw-bold'
-                      style={{backgroundColor: '#f9f9f9'}}
-                    >
-                      Nia Ayim
-                    </span>
-                  </td>
-                  <td className='text-end'>
-                    <div className='d-flex flex-column w-100 me-2'>
-                      <div className='d-flex flex-stack mb-2'>
-                        <span className='text-center me-2 fs-7 fw-bold'>27 items</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content flex-shrink-0'>
-                      <div className='d-flex justify-content flex-shrink-0'>
-                        <span className='text-center fw-bold '>TSh 462,128</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content-end flex-shrink-0'>
-                      <div className='d-flex justify-content-end flex-shrink-0'>
-                        <button className='btn btn-primary'>View details</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <div className='d-flex justify-content-start flex-column'>
-                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
-                          24/03/23 - 15:10
-                        </a>
-                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
-                          #00979
-                        </span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span
-                      className='badge badge-light-dark fs-15 fw-bold'
-                      style={{backgroundColor: '#f9f9f9'}}
-                    >
-                      Bianca Ross
-                    </span>
-                  </td>
-                  <td className='text-end'>
-                    <div className='d-flex flex-column w-100 me-2'>
-                      <div className='d-flex flex-stack mb-2'>
-                        <span className='text-center me-2 fs-7 fw-bold'>23 items</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content flex-shrink-0'>
-                      <div className='d-flex justify-content flex-shrink-0'>
-                        <span className='text-center fw-bold '>Tsh 213,500</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content-end flex-shrink-0'>
-                      <div className='d-flex justify-content-end flex-shrink-0'>
-                        <button className='btn btn-primary'>View details</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <div className='d-flex justify-content-start flex-column'>
-                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
-                          24/03/23 - 15:03
-                        </a>
-                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
-                          #00978
-                        </span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span
-                      className='badge badge-light-dark fs-15 fw-bold'
-                      style={{backgroundColor: '#f9f9f9'}}
-                    >
-                      Customer
-                    </span>
-                  </td>
-                  <td className='text-end'>
-                    <div className='d-flex flex-column w-100 me-2'>
-                      <div className='d-flex flex-stack mb-2'>
-                        <span className='text-center me-2 fs-7 fw-bold'>19 items</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content flex-shrink-0'>
-                      <span className='text-center fw-bold '>Tsh 213,500</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content-end flex-shrink-0'>
-                      <div className='d-flex justify-content-end flex-shrink-0'>
-                        <button className='btn btn-primary'>View details</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <div className='d-flex justify-content-start flex-column'>
-                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
-                          25/03/23 - 21:30
-                        </a>
-                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
-                          #00982
-                        </span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span
-                      className='badge badge-light-dark fs-15 '
-                      style={{backgroundColor: '#f9f9f9'}}
-                    >
-                      Patrick Richards
-                    </span>
-                  </td>
-                  <td className='text-end'>
-                    <div className='d-flex flex-column w-100 me-2'>
-                      <div className='d-flex flex-stack mb-2'>
-                        <span className='text-center me-2 fs-7 fw-bold'>23 itmes</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content flex-shrink-0'>
-                      <div className='d-flex justify-content flex-shrink-0'>
-                        <span className='text-center fw-bold '>Tsh 1,000,000</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content-end flex-shrink-0'>
-                      <div className='d-flex justify-content-end flex-shrink-0'>
-                        <button className='btn btn-primary '>View details</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <div className='d-flex justify-content-start flex-column'>
-                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
-                          25/03/23 - 15:10
-                        </a>
-                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
-                          #00981
-                        </span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span
-                      className='badge badge-light-dark fs-15'
-                      style={{backgroundColor: '#f9f9f9'}}
-                    >
-                      Customer
-                    </span>
-                  </td>
-                  <td className='text-end'>
-                    <div className='d-flex flex-column w-100 me-2'>
-                      <div className='d-flex flex-stack mb-2'>
-                        <span className='text-center me-2 fs-7 fw-bold'>12 items</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content flex-shrink-0'>
-                      <div className='d-flex justify-content flex-shrink-0'>
-                        <span className='text-center fw-bold '>TSh 311,500</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content-end flex-shrink-0'>
-                      <div className='d-flex justify-content-end flex-shrink-0'>
-                        <button className='btn btn-primary'>View details</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <div className='d-flex justify-content-start flex-column'>
-                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
-                          25/03/23 - 10:42
-                        </a>
-                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
-                          #00980
-                        </span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span
-                      className='badge badge-light-dark fs-15 fw-bold'
-                      style={{backgroundColor: '#f9f9f9'}}
-                    >
-                      Nia Ayim
-                    </span>
-                  </td>
-                  <td className='text-end'>
-                    <div className='d-flex flex-column w-100 me-2'>
-                      <div className='d-flex flex-stack mb-2'>
-                        <span className='text-center me-2 fs-7 fw-bold'>27 items</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content flex-shrink-0'>
-                      <div className='d-flex justify-content flex-shrink-0'>
-                        <span className='text-center fw-bold '>TSh 462,128</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content-end flex-shrink-0'>
-                      <div className='d-flex justify-content-end flex-shrink-0'>
-                        <button className='btn btn-primary'>View details</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <div className='d-flex justify-content-start flex-column'>
-                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
-                          24/03/23 - 15:10
-                        </a>
-                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
-                          #00979
-                        </span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span
-                      className='badge badge-light-dark fs-15 fw-bold'
-                      style={{backgroundColor: '#f9f9f9'}}
-                    >
-                      Bianca Ross
-                    </span>
-                  </td>
-                  <td className='text-end'>
-                    <div className='d-flex flex-column w-100 me-2'>
-                      <div className='d-flex flex-stack mb-2'>
-                        <span className='text-center me-2 fs-7 fw-bold'>23 items</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content flex-shrink-0'>
-                      <div className='d-flex justify-content flex-shrink-0'>
-                        <span className='text-center fw-bold '>Tsh 213,500</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content-end flex-shrink-0'>
-                      <div className='d-flex justify-content-end flex-shrink-0'>
-                        <button className='btn btn-primary'>View details</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div className='d-flex align-items-center'>
-                      <div className='d-flex justify-content-start flex-column'>
-                        <a href='#' className='text-dark fw-bold text-hover-primary fs-6'>
-                          24/03/23 - 15:03
-                        </a>
-                        <span className='text-muted fw-semibold text-muted d-block fs-7'>
-                          #00978
-                        </span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <span
-                      className='badge badge-light-dark fs-15 fw-bold'
-                      style={{backgroundColor: '#f9f9f9'}}
-                    >
-                      Customer
-                    </span>
-                  </td>
-                  <td className='text-end'>
-                    <div className='d-flex flex-column w-100 me-2'>
-                      <div className='d-flex flex-stack mb-2'>
-                        <span className='text-center me-2 fs-7 fw-bold'>19 items</span>
-                      </div>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content flex-shrink-0'>
-                      <span className='text-center fw-bold '>Tsh 213,500</span>
-                    </div>
-                  </td>
-                  <td>
-                    <div className='d-flex justify-content-end flex-shrink-0'>
-                      <div className='d-flex justify-content-end flex-shrink-0'>
-                        <button className='btn btn-primary'>View details</button>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
+                      </td>
+                      <td className='text-end'>
+                        <div className='d-flex flex-column w-100 me-2'>
+                          <div className='d-flex flex-stack mb-2'>
+                            <span className='text-center me-2 fs-15 fw-bold'>{order.quantity}</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div className='d-flex justify-content flex-shrink-0'>
+                          <div className='d-flex justify-content flex-shrink-0'>
+                            <span className='text-center fs-15 fw-bold '>{order.totalAmount}</span>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div className='d-flex justify-content-end flex-shrink-0'>
+                          <div className='d-flex justify-content-end flex-shrink-0'>
+                            <button className='btn btn-primary ' onClick={handleClick}>
+                              View details
+                            </button>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <div className='line'></div>
+                  </tbody>
+                </>
+              ))}
               {/* end::Table body */}
             </table>
             {/* end::Table */}
@@ -510,35 +136,30 @@ const CustomerOrders: FC = () => {
           {/* end::Table container */}
         </div>
       </div>
-       {/* Pagination */}
-       <div className='d-flex flex-stack flex-wrap pt-10'>
+      {/* Pagination */}
+      <div className='d-flex flex-stack flex-wrap pt-10'>
         <div className='fs-6 fw-bold text-gray-700'>Showing 1 to 10 of 50 entries</div>
-
         <ul className='pagination'>
           <li className='page-item previous'>
             <a href='#' className='page-link'>
               <i className='previous'></i>
             </a>
           </li>
-
           <li className='page-item active'>
             <a href='#' className='page-link'>
               1
             </a>
           </li>
-
           <li className='page-item'>
             <a href='#' className='page-link'>
               2
             </a>
           </li>
-
           <li className='page-item'>
             <a href='#' className='page-link'>
               3
             </a>
           </li>
-
           <li className='page-item next'>
             <a href='#' className='page-link'>
               <i className='next'></i>
@@ -547,7 +168,6 @@ const CustomerOrders: FC = () => {
         </ul>
       </div>
     </>
-    )
-  }
-
-  export {CustomerOrders}
+  )
+}
+export {CustomerOrders}
