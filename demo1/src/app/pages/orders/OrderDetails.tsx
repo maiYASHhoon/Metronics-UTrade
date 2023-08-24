@@ -154,9 +154,9 @@ const OrderDetails: FC = () => {
                   </thead>
                   {/* end::Table head */}
                   {/* begin::Table body */}
-                  {ProductDetails.records.map((product, index) => (
-                    <>
-                      <tbody>
+                  <tbody>
+                    {ProductDetails.records.map((product, index) => (
+                      <>
                         <tr>
                           <td>
                             <div className='d-flex align-items-center'>
@@ -193,11 +193,42 @@ const OrderDetails: FC = () => {
                             </div>
                           </td>
                         </tr>
-                        
-                      </tbody>
-                    </>
-                  ))}
-                  
+                      </>
+                    ))}
+                    <tr>
+                      <>
+                        <td>
+                          <div className='d-flex justify-content-end flex-shrink-0'>
+                            <div className='d-flex justify-content-end flex-shrink-0'>
+                              <span className='text-center fw-bold '>{ProductDetails.tax}</span>
+                            </div>
+                          </div>
+                        </td>
+                      </>
+                    </tr>
+                    <tr>
+                      <>
+                        <td>
+                          <div className='d-flex justify-content-end flex-shrink-0'>
+                            <div className='d-flex justify-content-end flex-shrink-0'>
+                              <span className='text-center fw-bold '>
+                                {ProductDetails.grandTotal}
+                              </span>
+                            </div>
+                          </div>
+                        </td>
+                      </>
+                    </tr>
+                    <tr>
+                      <>
+                        <td className='text-end'>
+                          <span className='text-end fw-bold fs-22'>
+                            Grand Total: {ProductDetails.subTotal}
+                          </span>
+                        </td>
+                      </>
+                    </tr>
+                  </tbody>
                   {/* end::Table body */}
                 </table>
                 {/* end::Table */}
