@@ -3,6 +3,8 @@ import {toAbsoluteUrl} from '../../../_metronic/helpers'
 import Select from 'react-select'
 import clsx from 'clsx'
 import {useNavigate} from 'react-router-dom'
+import {Crop} from '../../../_metronic/custom/imageCropper/index'
+import ImgCroper from '../../modules/apps/modals/img-croper'
 const optionsYear = [
   {value: 'Business 1', label: 'Business Really'},
   {value: 'Business 2', label: 'Business Really'},
@@ -22,13 +24,19 @@ const customStyles = {
 //File Upload
 const AddCustomer: FC = () => {
   const navigate = useNavigate()
+  const [crop, setCrop] = useState<Crop>()
   const [loading, setLoading] = useState(false)
   const [file, setFile] = useState<File | null>(null)
   const [imageUrl, setImageUrl] = useState('')
+  const [showModal, setShowModal] = useState(false)
   const handleUpload = (event: any) => {
     const uploadedFile = event.target.files[0]
     setFile(uploadedFile)
     setImageUrl(uploadedFile ? URL.createObjectURL(uploadedFile) : '')
+    setShowModal(true)
+  }
+  const closeModal = () => {
+    setShowModal(false)
   }
   {
     /* Validation/State Management */
@@ -145,6 +153,13 @@ const AddCustomer: FC = () => {
                   ) : (
                     <>
                       <div className='symbol symbol-200px'>
+                        <ImgCroper
+                          show={showModal}
+                          closeModal={closeModal}
+                          imageUrl={imageUrl}
+                          file={file}
+                          handleUpload={handleUpload}
+                        />
                         <img
                           className='object-fit-contain'
                           src={imageUrl}
