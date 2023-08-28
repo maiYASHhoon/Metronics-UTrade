@@ -24,11 +24,18 @@ const customStyles = {
 //File Upload
 const AddCustomer: FC = () => {
   const navigate = useNavigate()
-  const [crop, setCrop] = useState<Crop>()
+  const [crop, setCrop] = useState<Crop>({
+    unit: '%',
+    x: 25,
+    y: 25,
+    width: 60,
+    height: 60,
+  })
   const [loading, setLoading] = useState(false)
   const [file, setFile] = useState<File | null>(null)
   const [imageUrl, setImageUrl] = useState('')
   const [showModal, setShowModal] = useState(false)
+  const [croppedImageUrl, setCroppedImageUrl] = useState('')
   const handleUpload = (event: any) => {
     const uploadedFile = event.target.files[0]
     setFile(uploadedFile)
@@ -36,6 +43,11 @@ const AddCustomer: FC = () => {
     setShowModal(true)
   }
   const closeModal = () => {
+    setShowModal(false)
+  }
+  const handleSaveCrop = (newCrop: Crop) => {
+    console.log('Hii from Parent')
+    setCrop(newCrop)
     setShowModal(false)
   }
   {
@@ -135,36 +147,41 @@ const AddCustomer: FC = () => {
               <div className='pt-1 d-flex justify-content-center align-items-center'>
                 <div className='upload-area'>
                   {!file ? (
-                    <>
-                      <label htmlFor='logo-upload' className='upload-label'>
-                        <input
-                          id='logo-upload'
-                          type='file'
-                          onChange={handleUpload}
-                          style={{display: 'none'}}
-                        />
-                        <img
-                          className='upload-logo'
-                          src={toAbsoluteUrl('/media/customers/upload.png')}
-                          alt=''
-                        />
-                      </label>
-                    </>
+                    <label htmlFor='logo-upload' className='upload-label'>
+                      <input
+                        id='logo-upload'
+                        type='file'
+                        onChange={handleUpload}
+                        style={{display: 'none'}}
+                      />
+                      <img
+                        className='upload-logo'
+                        src={toAbsoluteUrl('/media/customers/upload.png')}
+                        alt=''
+                      />
+                    </label>
                   ) : (
                     <>
                       <div className='symbol symbol-200px'>
-                        <ImgCroper
-                          show={showModal}
-                          closeModal={closeModal}
-                          imageUrl={imageUrl}
-                          file={file}
-                          handleUpload={handleUpload}
-                        />
-                        <img
-                          className='object-fit-contain'
-                          src={imageUrl}
-                          alt={file ? file.name : ''}
-                        />
+                        {imageUrl && (
+                          <ImgCroper
+                            show={showModal}
+                            closeModal={closeModal}
+                            imageUrl={imageUrl}
+                            file={file}
+                            handleUpload={handleUpload}
+                            onSaveCrop={handleSaveCrop}
+                            crop={crop}
+                            setCroppedImageUrl={setImageUrl} 
+                          />
+                        )}
+                        {imageUrl && (
+                          <img
+                            className='object-fit-contain'
+                            src={imageUrl}
+                            alt={file ? file.name : ''}
+                          />
+                        )}
                       </div>
                     </>
                   )}
