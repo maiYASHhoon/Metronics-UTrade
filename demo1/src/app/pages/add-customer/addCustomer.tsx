@@ -46,7 +46,6 @@ const AddCustomer: FC = () => {
     setShowModal(false)
   }
   const handleSaveCrop = (newCrop: Crop) => {
-    console.log('Hii from Parent')
     setCrop(newCrop)
     setShowModal(false)
   }
@@ -172,10 +171,23 @@ const AddCustomer: FC = () => {
                             handleUpload={handleUpload}
                             onSaveCrop={handleSaveCrop}
                             crop={crop}
-                            setCroppedImageUrl={setImageUrl} 
+                            setCroppedImageUrl={setImageUrl}
                           />
                         )}
-                        {imageUrl && (
+                        {/* {imageUrl && (
+                          <img
+                            className='object-fit-contain'
+                            src={imageUrl}
+                            alt={file ? file.name : ''}
+                          />
+                        )} */}
+                        {croppedImageUrl ? (
+                          <img
+                            className='object-fit-contain'
+                            src={croppedImageUrl}
+                            alt={file ? file.name : ''}
+                          />
+                        ) : (
                           <img
                             className='object-fit-contain'
                             src={imageUrl}

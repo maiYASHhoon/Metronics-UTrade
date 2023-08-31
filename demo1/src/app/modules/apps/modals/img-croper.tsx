@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import {Modal, Button} from 'react-bootstrap'
 import ReactCrop, {Crop} from '../../../../_metronic/custom/imageCropper'
 interface ImgCroperProps {
@@ -22,10 +22,27 @@ const ImgCroper: React.FC<ImgCroperProps> = ({
   setCroppedImageUrl,
 }) => {
   const [crop, setCrop] = useState<Crop>(initialCrop)
+  const [aspectRatio, setAspectRatio] = useState<number | undefined>(16/9)
   const handleImageLoaded = (image: HTMLImageElement) => {}
+  const imageRef = useRef<HTMLImageElement>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [croppedImage, setCroppedImage] = useState<string>('')
   const handleImageCropped = (completedCrop: Crop) => {
-    // setCroppedImageUrl(croppedImageUrl)
+    if (!canvasRef.current || !imageRef.current) {
+      return
+    }
+    const canvas = canvasRef.current
+    const {x, y, width, height} = completedCrop
+    canvas.width = width
+    canvas.height = height
+    const ctx = canvas.getContext('2d')
+    if (ctx) {
+      ctx.drawImage(imageRef.current, x, y, width, height, 0, 0, width, height)
+      const croppedImageUrl = canvas.toDataURL()
+      setCroppedImageUrl(croppedImageUrl)
+    }
   }
+  
   return (
     <>
       <Modal show={show} onHide={closeModal} centered>
@@ -33,16 +50,15 @@ const ImgCroper: React.FC<ImgCroperProps> = ({
           <Modal.Title>Image Preview</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          -
           <ReactCrop
             crop={crop}
             onChange={(c) => setCrop(c)}
-            // onImageLoaded={handleImageLoaded}
             onComplete={handleImageCropped}
+            aspect={aspectRatio}
           >
-            <img src={imageUrl} alt='Preview' />
+            <img ref={imageRef} src={imageUrl} alt='Preview' />
           </ReactCrop>
-          {/* <img className='object-fit-contain' src={imageUrl} alt={file ? file.name : ''} /> */}
+          <canvas ref={canvasRef} style={{display: 'none'}} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={closeModal}>
@@ -53,7 +69,6 @@ const ImgCroper: React.FC<ImgCroperProps> = ({
             onClick={() => {
               closeModal()
               onSaveCrop(crop)
-              console.log('Hi from Child')
             }}
           >
             Save Changes
